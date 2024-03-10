@@ -21,7 +21,7 @@ const DrawerComponent: React.FC<DrawerProps> = ({ children }) => {
     };
 
     const handleNew = () => {
-        router.push("/new");
+        router.push("/novelty");
         drawer.current?.closeDrawer(); // Fechar o drawer após a navegação
     };
 
