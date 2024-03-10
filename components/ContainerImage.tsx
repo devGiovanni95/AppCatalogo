@@ -44,6 +44,8 @@ const styles = StyleSheet.create({
     elevation: 3,
     margin: 10,
     marginTop: 30,
+    alignItems: 'center',
+    alignContent: 'flex-start'
   },
   imageContainer: {
     flex: 2,
