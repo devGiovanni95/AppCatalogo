@@ -8,9 +8,6 @@ import { config } from '@gluestack-ui/config'
 
 export default function Faq() {
     return(
-    <DrawerComponent>
-      <GluestackUIProvider config={config}>
-            <Slot />
       <ScrollView>
         <View style={styles.container}>
           <Text style={styles.mainTitle}>F.A.Q</Text>
@@ -29,9 +26,6 @@ export default function Faq() {
           text6={'As velas aromáticas podem ser transformadoras quando se trata de mudar o nosso humor. Com fragrâncias cuidadosamente selecionadas, elas têm o poder de acalmar a mente, reduzir o estresse e criar uma sensação de conforto e bem-estar. Além disso, certos aromas têm propriedades terapêuticas conhecidas, como lavanda para relaxamento ou laranja para revigorar. Ao acender uma vela aromática, você pode transformar instantaneamente o ambiente ao seu redor, elevando o seu humor e promovendo uma sensação de equilíbrio e harmonia.'}/>
         </View>
         </ScrollView>
-        </GluestackUIProvider>
-    </DrawerComponent>
-    
   );
 }
 
