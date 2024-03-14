@@ -1,7 +1,6 @@
 import React from 'react';
 import { ScrollView, View } from 'react-native';
 import ImageOverlayComponent from '../components/ImageOverlayComponent';
-import DrawerComponent from '../components/DrawerComponent';
 import Title from '../components/TitleComponent';
 import ContainerImageText from '../components/ContainerImage';
 
@@ -11,7 +10,6 @@ export default function News(){
     const imageUrl1 = require('../assets/image2.png');
 
     return(
-        <DrawerComponent>
             <ScrollView >
                 <Title title={'Novidades'}></Title>
                 <ImageOverlayComponent imageUrl={imageUrl} legend={"Exemplo de Legenda"}/>
@@ -21,8 +19,5 @@ export default function News(){
                 <ContainerImageText imageUrl={imageUrl1} text={'Os segredos'}/>
 
             </ScrollView>
-        </DrawerComponent>
-        
-     
     );
 }

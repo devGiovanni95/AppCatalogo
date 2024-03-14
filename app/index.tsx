@@ -1,61 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import StyledInput from '../components/StyledInput';
-import StyledButton from '../components/StyledButton';
-import StyledButtonPressable from '../components/LoginButtonPressable';
-import { router } from 'expo-router';
-import { Image } from 'react-native' 
-import ImageComponent from '../components/ImageComponent1';
+import React from 'react';
+import { Text, View } from 'react-native';
+import ImageComponent from '../components/ImageComponent';
 
-export default function Login() {
-  const imageUrl = require('../assets/logo1.jpg');
-    const handleLogin = () => {
-        router.push('home')
-    }
-  return (
-    <View style={background.container}>
-        <View style={container.container}>
-       <ImageComponent imageUrl={imageUrl}/>
-        <StatusBar style="auto" />
-        <Text>Usuário</Text>
-        <StyledInput 
-            placeholder='Digite seu Usuário'
-            onChangeText={ (texto)=> console.log(texto) }
-            />
-        <Text>Senha</Text>
-        <StyledInput 
-            placeholder='Digite sua senha'
-            onChangeText={ (texto)=> console.log(texto) }
-        />
+export default function Home() {
+    const imageUrl = require('../assets/image1.png');
+    const imageUrl1 = require('../assets/image2.png');
+    const imageUrl2 = require('../assets/image3.png');
 
-        <StyledButtonPressable
-            onPress={handleLogin}
-            title='Login'
-
-        />
-      </View>
-
-    </View>
-  );
+    return (
+            <View>
+                <ImageComponent imageUrl={imageUrl} descrição="Velas aromáticas" descrição1="" />
+                <ImageComponent imageUrl={imageUrl1} descrição="Velas normais" descrição1="" />
+                <ImageComponent imageUrl={imageUrl2} descrição="Velas aromáticas" descrição1="" />
+                {/* Conteúdo da tela Home */}
+            </View>
+    );
 }
-
-const background = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#7A5656',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-
-const container = StyleSheet.create({
-  container: {
-    alignItems: 'flex-start', // Alinha os itens horizontalmente à esquerda
-    justifyContent: 'center',
-    backgroundColor: '#F9F9F9',
-    padding: 20,
-    borderRadius: 8,
-    width: '80%',
-    height: '60%',
-  },
-});
