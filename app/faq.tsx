@@ -1,10 +1,6 @@
 import { StyleSheet, View, Image, ScrollView } from 'react-native'
 import { Text } from '@gluestack-ui/themed'
 import Accordion from '../components/Accordion'
-import DrawerComponent from '../components/DrawerComponent';
-import { Slot } from 'expo-router'
-import { GluestackUIProvider } from '@gluestack-ui/themed'
-import { config } from '@gluestack-ui/config'
 
 export default function Faq() {
     return(
