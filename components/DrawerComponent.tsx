@@ -8,25 +8,18 @@ interface DrawerProps {
     children: React.ReactNode;
 }
 
-
-
 const DrawerComponent: React.FC<DrawerProps> = ({ children }) => {
     const drawer = useRef<DrawerLayoutAndroid>(null);
 
     const router = useRouter();
 
-    const handleLogin = () => {
-        router.push("/");
+    const handleHome = () => {
+        router.push('/');
         drawer.current?.closeDrawer(); // Fechar o drawer após a navegação
     };
 
     const handleNew = () => {
         router.push("/novelty");
-        drawer.current?.closeDrawer(); // Fechar o drawer após a navegação
-    };
-
-    const handleHome = () => {
-        router.push('/home');
         drawer.current?.closeDrawer(); // Fechar o drawer após a navegação
     };
 
@@ -38,7 +31,6 @@ const DrawerComponent: React.FC<DrawerProps> = ({ children }) => {
     const navigationView = () => (
         <View style={[styles.container, styles.navigationContainer]}>
             <Text style={styles.option} onPress={handleHome}>Home</Text>
-            <Text style={styles.option} onPress={handleLogin}>Login</Text>
             <Text style={styles.option} onPress={handleNew}>Novidades</Text>
             <Text style={styles.option} onPress={handleFaq}>F.A.Q</Text>
         </View>
