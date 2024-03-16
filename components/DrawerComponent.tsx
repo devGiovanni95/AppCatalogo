@@ -28,11 +28,27 @@ const DrawerComponent: React.FC<DrawerProps> = ({ children }) => {
         drawer.current?.closeDrawer(); // Fechar o drawer após a navegação
     };
 
+     //Vai ser apagado posteriormente
+    const handleSuccess = () => {
+        router.push('/success');
+        drawer.current?.closeDrawer(); // Fechar o drawer após a navegação
+    };
+    
+    //Vai ser apagado posteriormente
+    const handleUnSuccess = () => {
+        router.push('/unsuccess');
+        drawer.current?.closeDrawer(); // Fechar o drawer após a navegação
+    };
+    
     const navigationView = () => (
         <View style={[styles.container, styles.navigationContainer]}>
             <Text style={styles.option} onPress={handleHome}>Home</Text>
             <Text style={styles.option} onPress={handleNew}>Novidades</Text>
             <Text style={styles.option} onPress={handleFaq}>F.A.Q</Text>
+
+            
+            <Text style={styles.option} onPress={handleSuccess}>Success</Text>
+            <Text style={styles.option} onPress={handleUnSuccess}>Unsuccess</Text>
         </View>
     );
 
