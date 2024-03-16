@@ -1,18 +1,22 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-import ImageComponent from '../components/ImageComponent';
+import { ScrollView, View } from 'react-native';
+import ImageOverlayComponent from '../components/ImageOverlayComponent';
+import Title from '../components/TitleComponent';
+import ContainerImageText from '../components/ContainerImage';
 
 export default function Home() {
     const imageUrl = require('../assets/image1.png');
     const imageUrl1 = require('../assets/image2.png');
-    const imageUrl2 = require('../assets/image3.png');
 
-    return (
-            <View>
-                <ImageComponent imageUrl={imageUrl} descrição="Velas aromáticas" descrição1="" />
-                <ImageComponent imageUrl={imageUrl1} descrição="Velas normais" descrição1="" />
-                <ImageComponent imageUrl={imageUrl2} descrição="Velas aromáticas" descrição1="" />
-                {/* Conteúdo da tela Home */}
-            </View>
+    return(
+            <ScrollView >
+                <Title title={'Novidades'}></Title>
+                <ImageOverlayComponent imageUrl={imageUrl} legend={"Exemplo de Legenda"}/>
+                <Title title={'Outros Tópicos'}></Title>
+                <ContainerImageText imageUrl={imageUrl1} text={'Como decidir o melhor aroma?'}/>
+                <ContainerImageText imageUrl={imageUrl1} text={'Conheça nosso portfólio!'}/>
+                <ContainerImageText imageUrl={imageUrl1} text={'Os segredos'}/>
+
+            </ScrollView>
     );
 }
