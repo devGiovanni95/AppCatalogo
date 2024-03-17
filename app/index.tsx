@@ -3,6 +3,7 @@ import { ScrollView, View } from 'react-native';
 import ImageOverlayComponent from '../components/ImageOverlayComponent';
 import Title from '../components/TitleComponent';
 import ContainerImageText from '../components/ContainerImage';
+import { router } from 'expo-router';
 
 export default function Home() {
     const imageUrl = require('../assets/image1.png');
@@ -14,7 +15,7 @@ export default function Home() {
                 <ImageOverlayComponent imageUrl={imageUrl} legend={"Exemplo de Legenda"}/>
                 <Title title={'Outros Tópicos'}></Title>
                 <ContainerImageText imageUrl={imageUrl1} text={'Como decidir o melhor aroma?'}/>
-                <ContainerImageText imageUrl={imageUrl1} text={'Conheça nosso portfólio!'}/>
+                <ContainerImageText imageUrl={imageUrl1} text={'Conheça nosso portfólio!'} onClick={() => router.push("/products")} />
                 <ContainerImageText imageUrl={imageUrl1} text={'Os segredos'}/>
 
             </ScrollView>

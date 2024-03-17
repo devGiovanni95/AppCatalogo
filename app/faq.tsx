@@ -1,6 +1,7 @@
 import { StyleSheet, View, Image, ScrollView } from 'react-native'
 import { Text } from '@gluestack-ui/themed'
 import Accordion from '../components/Accordion'
+import React from 'react';
 
 export default function Faq() {
     return(

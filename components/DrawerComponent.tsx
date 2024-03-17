@@ -19,7 +19,7 @@ const DrawerComponent: React.FC<DrawerProps> = ({ children }) => {
     };
 
     const handlePortfolio = () => {
-        router.push("/portfolio");
+        router.push("/products");
         drawer.current?.closeDrawer(); // Fechar o drawer após a navegação
     };
 
