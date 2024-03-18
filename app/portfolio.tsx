@@ -6,9 +6,11 @@ import { ScrollView } from '@gluestack-ui/themed';
 import TitleComponent from '../components/TitleComponent';
 import BestProductComponent from '../components/BestProductComponent';
 import { router } from 'expo-router';
+import { useProduct } from '../hooks/productDetails';
 
 export default function Home() {
 
+    const product = useProduct()
     
     interface IProductItem {
         id: number,
@@ -43,7 +45,9 @@ export default function Home() {
                                 photo={item.photo1}
                                 promotion={item.promotion}
                                 description={item.description} 
-                                onPress={() =>  router.push('/faq')}/>
+                                onPress={() => {product.setProductId({id: item.id})
+                                router.push('/productDetail')
+                            }}/>
                         );
                     } else {
                         return (
@@ -54,8 +58,9 @@ export default function Home() {
                                 price={'R$ ' + item.price.toFixed(2)}
                                 photo={item.photo1}
                                 promotion={item.promotion}
-                                onPress={() =>  router.push('/faq')}
-                            />
+                                onPress={() => {product.setProductId({id: item.id})
+                                router.push('/productDetail')
+                            }}/>
                         );
                     }
                 })}
@@ -64,4 +69,3 @@ export default function Home() {
     );
     
 }
-
