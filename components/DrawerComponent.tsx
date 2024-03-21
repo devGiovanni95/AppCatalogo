@@ -23,6 +23,11 @@ const DrawerComponent: React.FC<DrawerProps> = ({ children }) => {
         drawer.current?.closeDrawer(); // Fechar o drawer após a navegação
     };
 
+    const handleAromas = () => {
+        router.push("/aromas");
+        drawer.current?.closeDrawer(); // Fechar o drawer após a navegação
+    };
+
     const handleFaq = () => {
         router.push('/faq');
         drawer.current?.closeDrawer(); // Fechar o drawer após a navegação
@@ -45,6 +50,7 @@ const DrawerComponent: React.FC<DrawerProps> = ({ children }) => {
             <Text style={styles.option} onPress={handleHome}>Home</Text>
             <Text style={styles.option} onPress={handlePortfolio}>Portifólio Completo</Text>
             <Text style={styles.option} onPress={handleFaq}>F.A.Q</Text>
+            <Text style={styles.option} onPress={handleAromas}>Aromas</Text>
 
             
             <Text style={styles.option} onPress={handleSuccess}>Success</Text>
@@ -92,6 +98,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         padding: 16,
+        paddingTop: 32,
         backgroundColor: '#7A5656', // Cor de fundo da app bar
         elevation: 4, // Sombra na app bar
         paddingHorizontal: 16, // Espaçamento horizontal
