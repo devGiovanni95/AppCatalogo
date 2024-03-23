@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 import { ScrollView } from '@gluestack-ui/themed';
 import TitleComponent from '../components/TitleComponent';
 import ScentItemComponent from '../components/ScentItemComponent';
+import { router } from 'expo-router';
 
 const aromas = [
     { id: 0, titulo: "Cítricos", photo: "image1.png", description: "descrição do aroma 1" },
@@ -27,6 +28,7 @@ export default function Aromas() {
             description={aroma.description} 
             onPress={() => {
                 setScentId(aroma.id); 
+                router.push('/productDetail')
             }}
             />
         ))}
