@@ -1,71 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Text, View } from 'react-native';
-import ImageComponent from '../components/ImageComponent';
-import ProductItemComponent from '../components/ProductItemComponent';
 import { ScrollView } from '@gluestack-ui/themed';
 import TitleComponent from '../components/TitleComponent';
-import BestProductComponent from '../components/BestProductComponent';
-import { router } from 'expo-router';
-import { useProduct } from '../hooks/productDetails';
+import ScentItemComponent from '../components/ScentItemComponent';
+
+const aromas = [
+    { id: 0, titulo: "Cítricos", photo: "image1.png", description: "descrição do aroma 1" },
+    { id: 1, titulo: "Adocicados", photo: "image2.png", description: "descrição do aroma 2" },
+    { id: 2, titulo: "Frutados", photo: "image3.png", description: "descrição do aroma 3" },
+    { id: 3, titulo: "Amadeirados", photo: "image3.png", description: "descrição do aroma 3" },
+];
 
 export default function Aromas() {
-
-    const product = useProduct()
+    const [scentId, setScentId] = useState(0);
     
-    interface IProductItem {
-        id: number,
-        name: string,
-        price: number,
-        photo1: string,
-        promotion: boolean,
-        description: string
-    
-    }
-
-    const [list, setList] = useState<IProductItem[]>([])
-
-    useEffect(() =>{
-        fetch('https://api-catalogo-pi.onrender.com/product')
-        .then(response => response.json())
-        .then(json => setList(json))
-    })
-
     return (
-            <ScrollView>
-                <TitleComponent title={'Portifólio Completo'}></TitleComponent>
-                <View style={{ alignItems: "center" }}>
-                {list.map((item, index) => {
-                    if (index === 0) {
-                        return (
-                            <BestProductComponent
-                                key={index}
-                                id={item.id}
-                                name={item.name}
-                                price={'R$ ' + item.price.toFixed(2)}
-                                photo={item.photo1}
-                                promotion={item.promotion}
-                                description={item.description} 
-                                onPress={() => {product.setProductId({id: item.id})
-                                router.push('/productDetail')
-                            }}/>
-                        );
-                    } else {
-                        return (
-                            <ProductItemComponent
-                                key={index}
-                                id={item.id}
-                                name={item.name}
-                                price={'R$ ' + item.price.toFixed(2)}
-                                photo={item.photo1}
-                                promotion={item.promotion}
-                                onPress={() => {product.setProductId({id: item.id})
-                                router.push('/productDetail')
-                            }}/>
-                        );
-                    }
-                })}
-            </View>
-            </ScrollView>
+    <ScrollView>
+        <TitleComponent title={'Aromas'}></TitleComponent>
+        <View style={{ alignItems: "center" }}>
+            {aromas.map((aroma) => (
+            <ScentItemComponent
+            key={aroma.id}
+            id={aroma.id}
+            name={aroma.titulo}
+            photo={aroma.photo}
+            description={aroma.description} 
+            onPress={() => {
+                setScentId(aroma.id); 
+            }}
+            />
+        ))}
+        </View>
+    </ScrollView>
     );
-    
 }
