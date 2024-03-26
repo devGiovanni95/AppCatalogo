@@ -28,6 +28,11 @@ const DrawerComponent: React.FC<DrawerProps> = ({ children }) => {
         drawer.current?.closeDrawer(); // Fechar o drawer após a navegação
     };
 
+    const handleRequest = () => {
+        router.push('/requestOrder');
+        drawer.current?.closeDrawer(); // Fechar o drawer após a navegação
+    };
+
      //Vai ser apagado posteriormente
     const handleSuccess = () => {
         router.push('/success');
@@ -45,6 +50,7 @@ const DrawerComponent: React.FC<DrawerProps> = ({ children }) => {
             <Text style={styles.option} onPress={handleHome}>Home</Text>
             <Text style={styles.option} onPress={handlePortfolio}>Portifólio Completo</Text>
             <Text style={styles.option} onPress={handleFaq}>F.A.Q</Text>
+            <Text style={styles.option} onPress={handleRequest}>Request</Text>
 
             
             <Text style={styles.option} onPress={handleSuccess}>Success</Text>
