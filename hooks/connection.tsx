@@ -6,7 +6,7 @@ import NetInfo from '@react-native-community/netinfo';
 const ConnectionContext = createContext<IConnectionContext>({} as IConnectionContext);
 
 export interface IConnectionContext {
-    isConnected: boolean
+    isConnected: boolean | null
     setIsConnected: (value: boolean) => void
 }
 
@@ -16,20 +16,22 @@ export interface IProductProviderProps {
 
 // Defining ProductProvider
 const ProductProvider = ({ children }: IProductProviderProps): ReactNode => {
-    const [isConnected, setIsConnected] = useState<boolean>(false);
+    const [isConnected, setIsConnected] = useState<boolean | null>(false);
 
-    const updateConnectionStatus = (status: boolean) => {
-        setIsConnected(status);
+    const updateConnectionStatus = (status: boolean | null) => {
+        console.log("🚀 ~ updateConnectionStatus ~ status:", status)
+        setIsConnected(status ?? false);
     };
     useEffect(() => {
-        const unsubscribe = NetInfo.addEventListener((state: { type: any; isConnected: boolean | ((prevState: boolean | undefined) => boolean | undefined) | undefined; }) => {
+        const unsubscribe = NetInfo.addEventListener((state) => {
+            console.log("🚀 ~ unsubscribe ~ state:", state)
             console.log("Connection type", state.type);
             console.log("Is connected?", state.isConnected);
             setIsConnected(state.isConnected);
         });
 
         // Verificar a conexão assim que o componente for montado
-        NetInfo.fetch().then((state: { type: any; isConnected: boolean | ((prevState: boolean | undefined) => boolean | undefined) | undefined; }) => {
+        NetInfo.fetch().then((state) => {
             console.log("Connection type", state.type);
             console.log("Is connected?", state.isConnected);
             setIsConnected(state.isConnected);
