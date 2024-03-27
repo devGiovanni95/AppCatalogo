@@ -1,19 +1,26 @@
+import { Center, Text } from "@gluestack-ui/themed";
 import { TextInput, StyleSheet } from "react-native";
 
 interface StyledInputProps {
     placeholder: string
+    name: string
+    value: string
     onChangeText?: (text: string) => void
 }
 
-export default function StyleInput({placeholder, onChangeText}: StyledInputProps){
+export default function StyleInput({placeholder, onChangeText, name, value}: StyledInputProps){
     return(
         // crindo nosso componente
         <>
-            <TextInput
-                style={styles.input}//importando a nossa classe de estilização 
-                onChangeText={onChangeText}
-                placeholder={placeholder}
-            />
+            <Text style={styles.text}>{name}</Text>
+            <Center>
+                <TextInput                
+                    style={styles.input}//importando a nossa classe de estilização 
+                    onChangeText={onChangeText}
+                    placeholder={placeholder}
+                    value={value}
+                    />
+            </Center>
         </>
     )
 }
@@ -22,7 +29,7 @@ export default function StyleInput({placeholder, onChangeText}: StyledInputProps
 const styles = StyleSheet.create({
     // funciona como classe do css e dentro dela passamos nossas estilizações
     input: {
-        width: '100%',
+        width: '90%',
         height: 40,
         marginTop: 8,
         marginBottom: 8,
@@ -30,4 +37,10 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         padding: 10
     },
+    text: {
+        marginStart: '5%',
+        marginTop: 8,
+        fontWeight: "800",
+        color: "black"
+    }
   });
