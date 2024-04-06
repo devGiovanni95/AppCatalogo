@@ -1,32 +1,27 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, ImageSourcePropType, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, ImageSourcePropType, TouchableOpacity, Pressable } from 'react-native';
 
-interface ImageTextProps {
+interface ContainerImageProps {
   imageUrl: ImageSourcePropType | undefined;
-  text: string;
-  onClick?: () => void;
+  text: string,
+  onPress: () => void
 }
 
-const ContainerImageText = ({ imageUrl, text, onClick }: ImageTextProps) => {
-  const handlePress = () => {
-    if (onClick) {
-      onClick();
-    }
-  };
-
+export default function ScentItemComponent({ imageUrl, text, onPress }: ContainerImageProps) {
   return (
-    <TouchableOpacity onPress={handlePress}>
+    <Pressable style={styles.container} onPress={onPress}>
       <View style={styles.container}>
         <View style={styles.imageContainer}>
-          <Image source={imageUrl} style={styles.image} />
+        <Image source={imageUrl} style={styles.image} />
         </View>
         <View style={styles.textContainer}>
           <Text style={styles.text}>{text}</Text>
         </View>
       </View>
-    </TouchableOpacity>
+    </Pressable>
+    
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -45,7 +40,7 @@ const styles = StyleSheet.create({
     margin: 10,
     marginTop: 30,
     alignItems: 'center',
-    alignContent: 'flex-start'
+    alignContent: 'flex-start',
   },
   imageContainer: {
     flex: 2,
@@ -67,5 +62,3 @@ const styles = StyleSheet.create({
     color: '#333',
   },
 });
-
-export default ContainerImageText;
