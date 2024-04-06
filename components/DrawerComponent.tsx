@@ -23,6 +23,11 @@ const DrawerComponent: React.FC<DrawerProps> = ({ children }) => {
         drawer.current?.closeDrawer(); // Fechar o drawer após a navegação
     };
 
+    const handleAromas = () => {
+        router.push("/aromas");
+        drawer.current?.closeDrawer(); // Fechar o drawer após a navegação
+    };
+
     const handleFaq = () => {
         router.push('/faq');
         drawer.current?.closeDrawer(); // Fechar o drawer após a navegação
@@ -49,6 +54,7 @@ const DrawerComponent: React.FC<DrawerProps> = ({ children }) => {
         <View style={[styles.container, styles.navigationContainer]}>
             <Text style={styles.option} onPress={handleHome}>Home</Text>
             <Text style={styles.option} onPress={handlePortfolio}>Portifólio Completo</Text>
+            <Text style={styles.option} onPress={handleAromas}>Aromas</Text>
             <Text style={styles.option} onPress={handleFaq}>F.A.Q</Text>
             <Text style={styles.option} onPress={handleRequest}>Request</Text>
 
