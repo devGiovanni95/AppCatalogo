@@ -6,10 +6,10 @@ import ScentItemComponent from '../components/ScentItemComponent';
 import { router } from 'expo-router';
 
 const aromas = [
-    { id: 0, titulo: "Cítricos", photo: "image1.png", description: "Frescor efervescente com notas ensolaradas" },
-    { id: 1, titulo: "Adocicados", photo: "image2.png", description: "Deliciosamente doce com toques reconfortantes" },
-    { id: 2, titulo: "Frutados", photo: "image3.png", description: "Vibrante e suculento, como um pomar em flor" },
-    { id: 3, titulo: "Amadeirados", photo: "image3.png", description: "Profundo e acolhedor, com notas terrosas e quentes" },
+    { id: 0, titulo: "Cítrico", description: "Revigorante, fresco, vibrante, ácido, energizante" },
+    { id: 1, titulo: "Adocicado", description: "Suave, açucarado, aconchegante, sensual, meloso" },
+    { id: 2, titulo: "Frutado", description: "Vibrante, fresco, suculento, doce, tropical" },
+    { id: 3, titulo: "Amadeirado", description: "Quente, intenso, terroso, aconchegante, sofisticado" },
 ];
 
 export default function Aromas() {
@@ -24,11 +24,10 @@ export default function Aromas() {
             key={aroma.id}
             id={aroma.id}
             name={aroma.titulo}
-            photo={aroma.photo}
             description={aroma.description} 
             onPress={() => {
-                setScentId(aroma.id); 
-                router.push('/productDetail')
+                setScentId(aroma.id);
+                router.push(`/aromaDetalhe${aroma.id}`)
             }}
             />
         ))}

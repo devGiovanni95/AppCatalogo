@@ -1,22 +1,33 @@
+import React from "react";
 import { Text, View, Image, StyleSheet, Pressable } from "react-native";
 
 interface ScentItemProps {
     id: number,
     name: string,
-    photo: string,
     description: string,
     onPress: () => void
 }
 
-export default function ScentItem({ id, name, photo, description, onPress }: ScentItemProps) {
+interface ImageObject {
+    [key: number]: any;
+}
+
+const images: ImageObject = {
+    0: require("../assets/aroma0.png"),
+    1: require("../assets/aroma1.png"),
+    2: require("../assets/aroma2.png"),
+    3: require("../assets/aroma3.png"),
+};
+
+export default function ScentItemComponent({ id, name, description, onPress }: ScentItemProps) {
     return (
-    <Pressable style={styles.container} onPress={onPress} data-id={id}>
-        <Image style={styles.image} source={require(`../assets/image2.png`)} />
-        <View style={styles.itemDetail}>
-        <Text style={styles.itemName}>{name}</Text>
-        <Text style={styles.itemDescription}>{description}</Text>
-        </View>
-    </Pressable>
+        <Pressable style={styles.container} onPress={onPress} data-id={id}>
+            <Image style={styles.image} source={images[id]} />
+            <View style={styles.itemDetail}>
+                <Text style={styles.itemName}>{name}</Text>
+                <Text style={styles.itemDescription}>{description}</Text>
+            </View>
+        </Pressable>
     )
 }
 
