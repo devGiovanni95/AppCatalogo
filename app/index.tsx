@@ -14,15 +14,15 @@ export default function Home() {
     return(
             <ScrollView >
                 <Title title={'Novidades'}></Title>
-                <ImageOverlayComponent imageUrl={imageUrl} legend={"As velas de baunilha são a nova sensação!"}/>
+                <ImageOverlayComponent imageUrl={imageUrl} legend={"Velas de baunilha"}/>
                 <Title title={'Outros Tópicos'}></Title>
                 <ContainerImageText imageUrl={imageUrl1} text={'Conheça nosso portfólio!'}
                 onPress={() => {
                     router.push(`/portfolio`)
                 }}/>
-                <ContainerImageText imageUrl={imageUrl2} text={'Como escolher o melhor aroma?'}
+                <ContainerImageText imageUrl={imageUrl2} text={'Como escolher o aroma ideal?'}
                 onPress={() => {
-                    router.push(`/aromas`)
+                    router.push(`/topicoAroma`)
                 }}/>
                 <ContainerImageText imageUrl={imageUrl3} text={'Segredos das velas aromáticas'}
                 onPress={() => {
