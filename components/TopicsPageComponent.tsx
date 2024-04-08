@@ -31,7 +31,7 @@ export default function TopicsScentComponent({ imageUrl, intro, dicas, conclusio
             <Text style={styles.conclusion}>{conclusion}</Text>
             <View style={styles.separator} />
             <Text style={styles.link}>{link}</Text>
-            <LoginButtonPressable onPress={onPress} title={"Aromas"} />
+            <LoginButtonPressable onPress={onPress} title={"Clique aqui"} />
         </View>
     );
 }

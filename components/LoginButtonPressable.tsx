@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         marginTop: 8
     },
     text: {
-        fontSize: 24,
+        fontSize: 20,
         lineHeight: 21,
         fontWeight: 'bold',
         letterSpacing: 0.25,
