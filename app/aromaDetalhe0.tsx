@@ -1,16 +1,14 @@
 import React from 'react';
-import { View, Text } from 'react-native';
 import { ScrollView } from '@gluestack-ui/themed';
 import TitleComponent from '../components/TitleComponent';
 import ScentDetail from '../components/ScentDetail';
+import SloganText from '../components/SloganText';
 
 export default function Aromas() {
     return (
         <ScrollView>
             <TitleComponent title={'Aroma cítrico'} />
-            <Text style={{ fontSize: 16, textAlign: 'center', marginVertical: 10 }}>
-                Revigorante, fresco, vibrante, ácido, energizante
-            </Text>
+            <SloganText text={'Revigorante, fresco, vibrante, ácido, energizante'}></SloganText>
             <ScentDetail
                 id={0}
                 description={`Imagine-se em um campo ensolarado de laranjeiras, banhado pela luz e pelo aroma vibrante e revigorante dos cítricos.

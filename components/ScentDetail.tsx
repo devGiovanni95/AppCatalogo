@@ -22,22 +22,26 @@ export default function ScentDetail({ id, description, matches }: ScentItemProps
     const paragraphs = description.split('\n');
     const firstParagraph = paragraphs.shift();
     return (
-        <><View style={styles.container}>
-            <View style={styles.textContainer}>
-                <Text style={styles.itemDescription}>{firstParagraph}</Text>
-                {paragraphs.map((paragraph, index) => (
-                    <Text key={index} style={styles.itemDescription}>{paragraph}</Text>
-                ))}
+        <>
+            <View style={styles.container}>
+                <View style={styles.textContainer}>
+                    <Text style={styles.itemDescription}>{firstParagraph}</Text>
+                        {paragraphs.map((paragraph, index) => (
+                            <Text key={index} style={styles.itemDescription}>{paragraph}</Text>
+                        ))}
+                </View>
+                <View style={styles.imageContainer}>
+                    <Image style={styles.image} source={images[id]} />
+                </View>
             </View>
-            <View style={styles.imageContainer}>
-                <Image style={styles.image} source={images[id]} />
-            </View>
-        </View><View style={styles.separator} /><View style={styles.matchesContainer}>
+            <View style={styles.separator} />
+            <View style={styles.matchesContainer}>
                 <Text style={styles.matchesTitle}>Esse aroma tem cara de</Text>
-                {matches.map((match, index) => (
-                    <Text key={index} style={styles.match}>{match}</Text>
-                ))}
-            </View></>
+                    {matches.map((match, index) => (
+                        <Text key={index} style={styles.match}>{match}</Text>
+                    ))}
+            </View>
+        </>
     );
 }
 
