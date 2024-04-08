@@ -1,7 +1,7 @@
 import React from "react";
 import { router } from "expo-router";
 import { ScrollView } from "react-native";
-import TopicsScentComponent from "../components/TopicsScentComponent";
+import TopicsScentComponent from "../components/TopicsPageComponent";
 import TitleComponent from "../components/TitleComponent";
 import SloganText from "../components/SloganText";
 

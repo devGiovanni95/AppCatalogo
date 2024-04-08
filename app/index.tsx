@@ -26,7 +26,7 @@ export default function Home() {
                 }}/>
                 <ContainerImageText imageUrl={imageUrl3} text={'Segredos das velas aromáticas'}
                 onPress={() => {
-                    router.push(`/aromaDetalhe3`)
+                    router.push(`/topicoSegredo`)
                 }}/>
                 <ContainerImageText imageUrl={imageUrl4} text={'Perguntas frequentes'}
                 onPress={() => {
