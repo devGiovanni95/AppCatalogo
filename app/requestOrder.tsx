@@ -1,19 +1,15 @@
-import { Box, Button, Center, ScrollView, Text, View } from '@gluestack-ui/themed';
-import { DrawerLayoutAndroid, StatusBar, StyleSheet } from 'react-native';
+import { Box, Button, Center, ScrollView, Text } from '@gluestack-ui/themed';
+import { DrawerLayoutAndroid, StatusBar, StyleSheet} from 'react-native';
 import StyleInput from '../components/StyledInput';
 import { Link, router, useRouter } from 'expo-router';
 import ButtonStyled from '../components/ButtonStyled';
 import { useEffect, useRef, useState } from 'react';
 import * as Location from 'expo-location';
 import NetInfo from '@react-native-community/netinfo';
-
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
 import ProductItemComponent from '../components/ProductItemComponent';
 import { useProduct } from '../hooks/productDetails';
 import ProductDetails from './productDetail';
 import TitleComponent from '../components/TitleComponent';
-
 
 export default function SuccessScreen() {
 
@@ -35,26 +31,6 @@ export default function SuccessScreen() {
     const [cidade, setCidade] = useState<string>('');
     const [estado, setEstado] = useState<string>('');
     const [email, setEmail] = useState('');
-    const [subTotal, setSubTotal] = useState<number>()
-
-    const getSubTotal = async () => {
-        try {
-          const value = await AsyncStorage.getItem('subtotal');
-          if (value !== null) {
-            setSubTotal(Number(value))
-          }
-        } catch (e) {
-            console.error('Error get SubTotal:', e);
-        }
-      };
-
-    const clearProducts = async () => {
-      try {
-        await AsyncStorage.removeItem('products');
-      } catch (error) {
-        console.error('Error clearing products from AsyncStorage:', error);
-      }
-    };
 
     interface IProductItem {
         id: number,
@@ -77,12 +53,13 @@ export default function SuccessScreen() {
     }, [product.productId]);
 
 
+
+
     const [isConnected, setIsConnected] = useState<boolean | null>(false);
 
     const updateConnectionStatus = (status: boolean | null) => {
         setIsConnected(status ?? false);
     };
-
     useEffect(() => {
         const unsubscribe = NetInfo.addEventListener((state) => {
             setIsConnected(state.isConnected);
@@ -100,27 +77,9 @@ export default function SuccessScreen() {
     const router = useRouter();
 
     const handleSuccess = () => {
-        getSubTotal()
-        console.log(subTotal)
         if(isConnected === true){
-            if(subTotal === 0){
-                router.push('/notFoundProducts')
-              }else{
-                if( nome  !== '' && 
-                    telefone  !== '' &&
-                    endereco  !== '' &&
-                    bairro  !== '' &&
-                    cidade  !== '' &&
-                    estado  !== '' &&
-                    email  !== ''
-                  ){
-                      clearProducts()
-                      router.push('/success');
-                      success.current?.closeDrawer();
-                    }else{
-                      router.push('/lackData');
-                    }
-            }
+            router.push('/success');
+            success.current?.closeDrawer();
         }else{
             router.push('/lackInternet');
             success.current?.closeDrawer();
@@ -164,9 +123,6 @@ export default function SuccessScreen() {
         }
     }
 
-    useEffect(()=>{
-        getSubTotal()
-    })
   
     if (!productDetail) {
         return <TitleComponent title="Carregando..." />;
