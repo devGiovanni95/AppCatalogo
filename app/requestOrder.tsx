@@ -12,6 +12,14 @@ import ProductDetails from './productDetail';
 import TitleComponent from '../components/TitleComponent';
 
 export default function SuccessScreen() {
+
+    const styles = StyleSheet.create({
+        button: {
+            width: "90%",
+            marginTop: 10
+        },
+    })
+    
     const product = useProduct()
     const [location, setLocation] = useState<Location.LocationObject | null>(null);
     const [city, setCity] = useState<string | null >('');
@@ -181,9 +189,4 @@ export default function SuccessScreen() {
 }
 
 
-const styles = StyleSheet.create({
-    button: {
-        width: "90%",
-        marginTop: 10
-    },
-})}
+}
