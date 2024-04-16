@@ -8,6 +8,7 @@ import StyledButtonPressable from '../components/LoginButtonPressable';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+
 export default function ProductDetails() {
     const product = useProduct(); // Obtenha o ID do produto usando useProduct
 
@@ -68,6 +69,7 @@ export default function ProductDetails() {
     } else {
         return (
             <ScrollView>
+
                 <Center>
                     <BestProductComponent
                         key={productDetail.id}
@@ -85,6 +87,8 @@ export default function ProductDetails() {
                             </StyledButtonPressable>
                     </View>
                 </Center>
+
+             
             </ScrollView>
         );
     }
