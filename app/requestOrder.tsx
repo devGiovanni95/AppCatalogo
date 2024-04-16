@@ -1,5 +1,5 @@
-import { Box, Button, Center, ScrollView, Text } from '@gluestack-ui/themed';
-import { DrawerLayoutAndroid, StatusBar, StyleSheet} from 'react-native';
+import { Box, Button, Center, ScrollView, Text, Alert, AlertIcon, AlertText, InfoIcon } from '@gluestack-ui/themed';
+import { DrawerLayoutAndroid, StatusBar, StyleSheet } from 'react-native';
 import StyleInput from '../components/StyledInput';
 import { Link, router, useRouter } from 'expo-router';
 import ButtonStyled from '../components/ButtonStyled';
@@ -8,7 +8,6 @@ import * as Location from 'expo-location';
 import NetInfo from '@react-native-community/netinfo';
 import ProductItemComponent from '../components/ProductItemComponent';
 import { useProduct } from '../hooks/productDetails';
-import ProductDetails from './productDetail';
 import TitleComponent from '../components/TitleComponent';
 
 export default function SuccessScreen() {
@@ -19,18 +18,20 @@ export default function SuccessScreen() {
             marginTop: 10
         },
     })
-    
+
     const product = useProduct()
     const [location, setLocation] = useState<Location.LocationObject | null>(null);
-    const [city, setCity] = useState<string | null >('');
-    const [errorMsg, setErrorMsg] = useState('');
-    const [nome, setNome] = useState('');
-    const [telefone, setTelefone] = useState('');
-    const [endereco, setEndereco] = useState<string>('');
-    const [bairro, setBairro] = useState<string>('');
-    const [cidade, setCidade] = useState<string>('');
-    const [estado, setEstado] = useState<string>('');
-    const [email, setEmail] = useState('');
+    const [city, setCity] = useState<string | null>('')
+    const [errorMsg, setErrorMsg] = useState('')
+    const [nome, setNome] = useState('')
+    const [telefone, setTelefone] = useState('')
+    const [endereco, setEndereco] = useState<string>('')
+    const [bairro, setBairro] = useState<string>('')
+    const [cidade, setCidade] = useState<string>('')
+    const [estado, setEstado] = useState<string>('')
+    const [email, setEmail] = useState('')
+    const [showAlert, setShowAlert] = useState(false);
+
 
     interface IProductItem {
         id: number,
@@ -77,18 +78,31 @@ export default function SuccessScreen() {
     const router = useRouter();
 
     const handleSuccess = () => {
-        if(isConnected === true){
-            router.push('/success');
-            success.current?.closeDrawer();
-        }else{
-            router.push('/lackInternet');
-            success.current?.closeDrawer();
+        if (isConnected === true) {
+            if (nome.trim() !== '' &&
+                endereco.trim() !== '' &&
+                telefone.trim() !== '' &&
+                bairro.trim() !== '' &&
+                cidade.trim() !== '' &&
+                estado.trim() !== '' &&
+                email.trim() !== '') {
+                router.push('/success')
+                success.current?.closeDrawer()
+            }
+            else {
+                setShowAlert(true)
+                return
+            }
+
+        } else {
+            router.push('/lackInternet')
+            success.current?.closeDrawer()
         }
     };
 
     const handleBack = () => {
-        router.push('/');
-        success.current?.closeDrawer();
+        router.push('/')
+        success.current?.closeDrawer()
     };
 
     useEffect(() => {
@@ -104,26 +118,26 @@ export default function SuccessScreen() {
         })();
     }, [isConnected]);
     const reverseGeocode = async (latitude: number, longitude: number) => {
-        try{
+        try {
             const reverseGeocodedAddress = await Location.reverseGeocodeAsync({
                 latitude: latitude,
                 longitude: longitude
-            })            
+            })
             const firstAddress = reverseGeocodedAddress[0];
             // console.log("🚀 ~ reverseGeocode ~ firstAddress:", firstAddress)
-            if(firstAddress){
-                setCity(firstAddress.subregion)     
+            if (firstAddress) {
+                setCity(firstAddress.subregion)
                 setCidade(firstAddress.subregion + "")
                 setBairro(firstAddress.district + "")
-                setEndereco(firstAddress.street + " " +firstAddress.streetNumber)
+                setEndereco(firstAddress.street + " " + firstAddress.streetNumber)
                 setEstado(firstAddress.region + "")
             }
-        }catch(error){
+        } catch (error) {
             console.error(error)
         }
     }
 
-  
+
     if (!productDetail) {
         return <TitleComponent title="Carregando..." />;
     } else {
@@ -160,6 +174,12 @@ export default function SuccessScreen() {
                             router.push('/productDetail')
                         }} />
 
+                    {showAlert && (
+                        <Alert mx="$5" action="error" variant="outline">
+                            <AlertIcon as={InfoIcon} mr="$3" />
+                            <AlertText>Por favor preencha todos os campos!</AlertText>
+                        </Alert>
+                    )}
                 </Center>
 
                 <Center>
@@ -170,23 +190,23 @@ export default function SuccessScreen() {
                             title='Enviar'
                             colorText='white'
                             borderColor='#7A5656'
-                            />
-                </Box>
+                        />
+                    </Box>
 
-                <Box style={styles.button}>
-                        <ButtonStyled 
-                        onPress={() => handleBack()}
+                    <Box style={styles.button}>
+                        <ButtonStyled
+                            onPress={() => handleBack()}
                             color='white'
                             title='Cancelar'
                             colorText='#7A5656'
                             borderColor='#7A5656'
                         />
-                </Box>
-            </Center>
+                    </Box>
+                </Center>
 
-        </ScrollView>
-    );
-}
+            </ScrollView>
+        );
+    }
 
 
 }
