@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { ScrollView } from '@gluestack-ui/themed';
-import TitleComponent from '../components/TitleComponent';
-import BestProductComponent from '../components/BestProductComponent';
-
-import { useProduct } from '../hooks/productDetails';
+import React, { useEffect, useState } from 'react'
+import { ScrollView } from '@gluestack-ui/themed'
+import TitleComponent from '../components/TitleComponent'
+import BestProductComponent from '../components/BestProductComponent'
+import { useProduct } from '../hooks/productDetails'
+import { router } from 'expo-router'
 
 export default function ProductDetails() {
     const product = useProduct(); // Obtenha o ID do produto usando useProduct
@@ -42,7 +42,8 @@ export default function ProductDetails() {
                     photo={productDetail.photo1}
                     promotion={productDetail.promotion}
                     description={productDetail.description}
-                    onPress={() => console.log(productDetail.id)}
+                    onPress={() => {product.setProductId({id: productDetail.id})
+                    router.push('/requestOrder')}}
                 />
             </ScrollView>
         );
