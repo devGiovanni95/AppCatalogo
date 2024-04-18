@@ -2,7 +2,7 @@ import { Link } from "expo-router";
 import { Text, View, Image, StyleSheet, ImageSourcePropType, Pressable } from "react-native";
 
 
-interface ProductItemProps {
+interface ProductItemComponentProps {
     id: number,
     name: string,
     price: string,
@@ -12,7 +12,7 @@ interface ProductItemProps {
 }
 
 
-export default function ProductItem({ id, name, price, photo, promotion, onPress }: ProductItemProps) {
+export default function ProductItemComponent({ id, name, price, photo, promotion, onPress }: ProductItemComponentProps) {
     /*Formata a o preço para mostrar duas casas decimais*/
     const formattedPrice = price
     return (

@@ -14,7 +14,10 @@ export default function Home() {
     return(
             <ScrollView >
                 <Title title={'Novidades'}></Title>
-                <ImageOverlayComponent imageUrl={imageUrl} legend={"Velas de baunilha"}/>
+                <ImageOverlayComponent imageUrl={imageUrl} legend={"Velas de baunilha"}
+                onPress={() => {
+                    router.push(`/category`)
+                }}/>
                 <Title title={'Outros Tópicos'}></Title>
                 <ContainerImageText imageUrl={imageUrl1} text={'Conheça nosso portfólio!'}
                 onPress={() => {

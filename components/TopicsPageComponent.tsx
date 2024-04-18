@@ -3,7 +3,7 @@ import { View, Image, Text, StyleSheet } from "react-native";
 import TopicsComponent from "./TopicsComponent";
 import LoginButtonPressable from "./LoginButtonPressable";
 
-interface TopicsScentProps {
+interface TopicsScentComponentProps {
     imageUrl: any;
     intro: string;
     dicas: { id: number; title: string; description: string }[],
@@ -12,7 +12,7 @@ interface TopicsScentProps {
     onPress: () => void;
 }
 
-export default function TopicsScentComponent({ imageUrl, intro, dicas, conclusion, link, onPress }: TopicsScentProps) {
+export default function TopicsScentComponent({ imageUrl, intro, dicas, conclusion, link, onPress }: TopicsScentComponentProps) {
     return (
         <View style={styles.container}>
             <View style={styles.imageContainer}>

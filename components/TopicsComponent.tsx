@@ -1,12 +1,12 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 
-interface TopicsProps {
+interface TopicsComponentProps {
     topicTitle: string,
     topicDescription: string,
 }
 
-export default function TopicsComponent ({ topicTitle, topicDescription }: TopicsProps) {
+export default function TopicsComponent ({ topicTitle, topicDescription }: TopicsComponentProps) {
     return (
         <View style={styles.textContainer}>
             <Text style={styles.topicTitle}>{topicTitle}</Text>

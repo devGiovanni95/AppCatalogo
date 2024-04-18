@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, ImageSourcePropType, TouchableOpacity, Pressable } from 'react-native';
+import { View, Text, Image, StyleSheet, ImageSourcePropType, Pressable } from 'react-native';
 
 interface ContainerImageProps {
   imageUrl: ImageSourcePropType | undefined;
@@ -7,26 +7,22 @@ interface ContainerImageProps {
   onPress: () => void
 }
 
-export default function ScentItemComponent({ imageUrl, text, onPress }: ContainerImageProps) {
+export default function Cont({ imageUrl, text, onPress }: ContainerImageProps) {
   return (
     <Pressable style={styles.container} onPress={onPress}>
-      <View style={styles.container}>
-        <View style={styles.imageContainer}>
+      <View style={styles.imageContainer}>
         <Image source={imageUrl} style={styles.image} />
-        </View>
-        <View style={styles.textContainer}>
-          <Text style={styles.text}>{text}</Text>
-        </View>
+      </View>
+      <View style={styles.textContainer}>
+        <Text style={styles.text}>{text}</Text>
       </View>
     </Pressable>
-    
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    width: 370,
-    height: 150,
+    width: '90%',
     marginLeft: '5%',
     flexDirection: 'row',
     backgroundColor: '#fff',
@@ -40,18 +36,20 @@ const styles = StyleSheet.create({
     margin: 10,
     marginTop: 30,
     alignItems: 'center',
-    alignContent: 'flex-start',
   },
   imageContainer: {
-    flex: 2,
+    flex: 1,
+    aspectRatio: 1,
     overflow: 'hidden',
     borderTopLeftRadius: 10,
     borderBottomLeftRadius: 10,
+    borderRadius: 10,
   },
   image: {
     width: '100%',
     height: '100%',
-    resizeMode: 'stretch',
+    resizeMode: 'cover',
+    borderRadius: 10,
   },
   textContainer: {
     flex: 2,
