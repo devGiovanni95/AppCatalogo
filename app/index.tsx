@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from 'react';
-import { DrawerLayoutAndroid, ScrollView, View } from 'react-native';
-import ImageOverlayComponent from '../components/ImageOverlayComponent';
-import Title from '../components/TitleComponent';
-import ContainerImageText from '../components/ContainerImage';
+import React from 'react';
+import { ScrollView } from 'react-native';
 import { router } from 'expo-router';
+import ImageOverlay from '../components/ImageOverlay';
+import Title from '../components/TitleComponent';
+import ContainerImage from '../components/ContainerImage';
 
 export default function Home() {
     const imageUrl = require('../assets/image1.png');
@@ -14,24 +14,24 @@ export default function Home() {
     return(
             <ScrollView >
                 <Title title={'Novidades'}></Title>
-                <ImageOverlayComponent imageUrl={imageUrl} legend={"Velas de baunilha"}
+                <ImageOverlay imageUrl={imageUrl} legend={"Velas de baunilha"}
                 onPress={() => {
                     router.push(`/category`)
                 }}/>
                 <Title title={'Outros Tópicos'}></Title>
-                <ContainerImageText imageUrl={imageUrl1} text={'Conheça nosso portfólio!'}
+                <ContainerImage imageUrl={imageUrl1} text={'Conheça nosso portfólio!'}
                 onPress={() => {
                     router.push(`/portfolio`)
                 }}/>
-                <ContainerImageText imageUrl={imageUrl2} text={'Como escolher o aroma ideal?'}
+                <ContainerImage imageUrl={imageUrl2} text={'Como escolher o aroma ideal?'}
                 onPress={() => {
-                    router.push(`/topicoAroma`)
+                    router.push(`/topicScent`)
                 }}/>
-                <ContainerImageText imageUrl={imageUrl3} text={'Segredos das velas aromáticas'}
+                <ContainerImage imageUrl={imageUrl3} text={'Segredos das velas aromáticas'}
                 onPress={() => {
-                    router.push(`/topicoSegredo`)
+                    router.push(`/topicSecret`)
                 }}/>
-                <ContainerImageText imageUrl={imageUrl4} text={'Perguntas frequentes'}
+                <ContainerImage imageUrl={imageUrl4} text={'Perguntas frequentes'}
                 onPress={() => {
                     router.push(`/faq`)
                 }}/>

@@ -1,9 +1,9 @@
 import React from "react";
 import { View, Image, Text, StyleSheet } from "react-native";
-import TopicsComponent from "./TopicsComponent";
+import TopicsComponent from "./Topics";
 import LoginButtonPressable from "./LoginButtonPressable";
 
-interface TopicsScentComponentProps {
+interface TopicsPagePropsProps {
     imageUrl: any;
     intro: string;
     dicas: { id: number; title: string; description: string }[],
@@ -12,13 +12,12 @@ interface TopicsScentComponentProps {
     onPress: () => void;
 }
 
-export default function TopicsScentComponent({ imageUrl, intro, dicas, conclusion, link, onPress }: TopicsScentComponentProps) {
+export default function TopicsPageProps({ imageUrl, intro, dicas, conclusion, link, onPress }: TopicsPagePropsProps) {
     return (
         <View style={styles.container}>
             <View style={styles.imageContainer}>
                 <Image source={imageUrl} style={styles.image} />
             </View>
-            
             <Text style={styles.intro}>{intro}</Text>
             {dicas.map((dica) => (
                 <TopicsComponent
@@ -27,7 +26,6 @@ export default function TopicsScentComponent({ imageUrl, intro, dicas, conclusio
                     topicDescription={dica.description}
                 />
             ))}
-
             <Text style={styles.conclusion}>{conclusion}</Text>
             <View style={styles.separator} />
             <Text style={styles.link}>{link}</Text>

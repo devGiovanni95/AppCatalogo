@@ -1,25 +1,25 @@
 import React from "react";
 import { Text, View, Image, StyleSheet, Pressable } from "react-native";
 
-interface ScentItemComponentProps {
+interface ScentItemProps {
     id: number,
     name: string,
     description: string,
     onPress: () => void
 }
 
-interface ImageObject {
+interface ScentImageProps {
     [key: number]: any;
 }
 
-const images: ImageObject = {
+const images: ScentImageProps = {
     0: require("../assets/aroma0.png"),
     1: require("../assets/aroma1.png"),
     2: require("../assets/aroma2.png"),
     3: require("../assets/aroma3.png"),
 };
 
-export default function ScentItemComponent({ id, name, description, onPress }: ScentItemComponentProps) {
+export default function ScentItemComponent({ id, name, description, onPress }: ScentItemProps) {
     return (
         <Pressable style={styles.container} onPress={onPress} data-id={id}>
             <View style={styles.imageContainer}>
@@ -73,9 +73,9 @@ const styles = StyleSheet.create({
       color: '#333',
     },
     itemName: {
-        color: '#000000',
-        fontSize: 18,
-        fontWeight: '500',
-        marginBottom: 16,
+      color: '#000000',
+      fontSize: 18,
+      fontWeight: '500',
+      marginBottom: 16,
     },
   });

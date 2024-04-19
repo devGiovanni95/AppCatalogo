@@ -6,11 +6,9 @@ interface TitleComponentProps {
 
 export default function TitleComponent({ title }: TitleComponentProps) {
   return (
-    <>
-      <Text style={styles.title}>
-        {title}
-      </Text>
-    </>
+    <Text style={styles.title}>
+      {title}
+    </Text>
   );
 }
 

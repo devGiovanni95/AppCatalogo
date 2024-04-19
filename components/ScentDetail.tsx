@@ -8,11 +8,11 @@ interface ScentItemProps {
     matches: string[];
 }
 
-interface ImageObject {
+interface ScentImageProps {
     [key: number]: any;
 }
 
-const images: ImageObject = {
+const images: ScentImageProps = {
     0: require("../assets/aroma0.png"),
     1: require("../assets/aroma1.png"),
     2: require("../assets/aroma2.png"),
@@ -21,22 +21,19 @@ const images: ImageObject = {
 
 export default function ScentDetail({ id, text1, text2, matches }: ScentItemProps) {
     return (
-            <View style={styles.container}>
-                <View style={styles.imageContainer}>
-                    <Image style={styles.image} source={images[id]} />
-                </View>
-
-                <Text style={styles.text}>{text1}</Text>
-                <Text style={styles.text}>{text2}</Text>
-
-
-                <View style={styles.matchesContainer}>
-                    <Text style={styles.matchesTitle}>Esse aroma tem cara de</Text>
-                        {matches.map((match, index) => (
-                            <Text key={index} style={styles.match}>{match}</Text>
-                        ))}
-                    </View>
+        <View style={styles.container}>
+            <View style={styles.imageContainer}>
+                <Image style={styles.image} source={images[id]} />
             </View>
+            <Text style={styles.text}>{text1}</Text>
+            <Text style={styles.text}>{text2}</Text>
+            <View style={styles.matchesContainer}>
+                <Text style={styles.matchesTitle}>Esse aroma tem cara de</Text>
+                    {matches.map((match, index) => (
+                        <Text key={index} style={styles.match}>{match}</Text>
+                    ))}
+                </View>
+        </View>
     );
 }
 

@@ -1,13 +1,13 @@
 import React, { ReactNode } from 'react';
-import { Image, ImageSourcePropType, View, StyleSheet, Text, TouchableOpacity, Pressable } from 'react-native';
+import { Image, ImageSourcePropType, View, StyleSheet, Text, Pressable } from 'react-native';
 
-interface IImage {
+interface ImageOverlayProps {
   imageUrl: ImageSourcePropType | undefined;
   legend: ReactNode;
   onPress: () => void;
 }
 
-export default function ImageOverlayComponent({ imageUrl, legend, onPress }: IImage) {
+export default function ImageOverlay({ imageUrl, legend, onPress }: ImageOverlayProps) {
   return (
     <Pressable onPress={onPress}>
       <View style={styles.container}>
@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
     paddingTop: 16,
     position: 'relative',
   },
-
   imageStyles: {
     width: '90%',
     height: 250,
@@ -38,7 +37,6 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
   },
-
   overlay: {
     position: 'absolute',
     bottom: 16,
@@ -49,7 +47,6 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
   },
-
   caption: {
     fontSize: 16,
     color: '#fff',

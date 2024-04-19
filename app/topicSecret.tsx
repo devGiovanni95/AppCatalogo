@@ -1,7 +1,7 @@
 import React from "react";
 import { router } from "expo-router";
 import { ScrollView } from "react-native";
-import TopicsScentComponent from "../components/TopicsPageComponent";
+import TopicsScent from "../components/TopicsPage";
 import TitleComponent from "../components/TitleComponent";
 import SloganText from "../components/SloganText";
 
@@ -17,7 +17,7 @@ export default function TopicoAroma() {
         <ScrollView>
             <TitleComponent title={'Segredo das velas aromáticas'}></TitleComponent>
             <SloganText text={'As velas aromáticas são muito mais do que apenas velas, confira algumas curiosidades sobre elas abaixo'}></SloganText>
-            <TopicsScentComponent
+            <TopicsScent
                 imageUrl={imageUrl}
                 intro={"As velas aromáticas são portadoras de aromas que transformam o ambiente, criando uma atmosfera relaxante, energizante ou aconchegante. Além disso, as velas aromáticas podem ser utilizadas para fins terapêuticos e até mesmo para rituais místicos."}
                 dicas={dicas}

@@ -10,12 +10,11 @@ interface StyledInputProps {
 
 export default function StyleInput({placeholder, onChangeText, name, value}: StyledInputProps){
     return(
-        // crindo nosso componente
         <>
             <Text style={styles.text}>{name}</Text>
             <Center>
                 <TextInput                
-                    style={styles.input}//importando a nossa classe de estilização 
+                    style={styles.input}
                     onChangeText={onChangeText}
                     placeholder={placeholder}
                     value={value}
@@ -25,9 +24,7 @@ export default function StyleInput({placeholder, onChangeText, name, value}: Sty
     )
 }
 
-// Pra estilizar os nossos componentes
 const styles = StyleSheet.create({
-    // funciona como classe do css e dentro dela passamos nossas estilizações
     input: {
         width: '90%',
         height: 40,
@@ -43,4 +40,4 @@ const styles = StyleSheet.create({
         fontWeight: "800",
         color: "black"
     }
-  });
+});

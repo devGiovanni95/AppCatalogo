@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
-import { ScrollView } from '@gluestack-ui/themed';
-import TitleComponent from '../components/TitleComponent';
+import { View } from 'react-native';
+import { ScrollView } from '@gluestack-ui/themed'
 import { router } from 'expo-router';
 import { useCategory } from '../hooks/categoryDetails';
-import CategoryComponent from '../components/CategoryComponent';
+import CategoryItem from '../components/CategoryItem';
+import TitleComponent from '../components/TitleComponent';
 
 export default function Category() {
 
     const category = useCategory()
-
     interface ICategoryItem {
         id: number,
         name: string,
@@ -27,14 +26,13 @@ export default function Category() {
             .then(json => setList(json))
     })
 
-
     return (
         <ScrollView>
             <TitleComponent title={'Categorias'}></TitleComponent>
             <View style={{ alignItems: "center" }}>
                 {list.map((item, index) => {
                     return (
-                        <CategoryComponent
+                        <CategoryItem
                             key={index}
                             id={item.id}
                             name={item.name}

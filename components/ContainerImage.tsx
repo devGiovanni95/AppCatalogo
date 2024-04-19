@@ -7,7 +7,7 @@ interface ContainerImageProps {
   onPress: () => void
 }
 
-export default function Cont({ imageUrl, text, onPress }: ContainerImageProps) {
+export default function ContainterImage({ imageUrl, text, onPress }: ContainerImageProps) {
   return (
     <Pressable style={styles.container} onPress={onPress}>
       <View style={styles.imageContainer}>

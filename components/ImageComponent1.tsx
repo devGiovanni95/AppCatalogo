@@ -1,11 +1,10 @@
-import { Link } from "expo-router";
-import { Text, View, Image, StyleSheet, ImageSourcePropType } from "react-native";
+import { View, Image, StyleSheet, ImageSourcePropType } from "react-native";
 
-interface IImage {
+interface ImageComponent1Props {
     imageUrl: ImageSourcePropType | undefined
 }
 
-export default function ImageComponent1({imageUrl}:IImage) {
+export default function ImageComponent1({imageUrl}:ImageComponent1Props) {
     return(
         <View  style={styles.container}>
             <Image
@@ -17,15 +16,14 @@ export default function ImageComponent1({imageUrl}:IImage) {
 }
 const styles = StyleSheet.create({
     stretch: {
-        // marginLeft: '5%',
-      width: 200,
-      height: 60,
-      resizeMode: 'stretch',
+        width: 200,
+        height: 60,
+        resizeMode: 'stretch',
     },
     container: {
-        flexDirection: 'row', // Estabelece o layout em linha (horizontal)
-        alignItems: 'center', // Alinha os itens verticalmente ao centro
+        flexDirection: 'row',
+        alignItems: 'center',
         paddingTop: 50,
         justifyContent: 'center',
-      },
-  });
+    },
+});

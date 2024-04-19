@@ -18,3 +18,4 @@ export default function Aromas() {
         </ScrollView>
     );
 }
+

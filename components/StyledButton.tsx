@@ -8,13 +8,10 @@ interface StyledButtonProps {
 
 export default function StyledButton({title, onPress, color}: StyledButtonProps){
     return(
-        // crindo nosso componente
-        <>
-            <Button
-                title={title}
-                color={color}
-                onPress={onPress}
-            />
-        </>
+        <Button
+            title={title}
+            color={color}
+            onPress={onPress}
+        />
     )
 }
