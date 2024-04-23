@@ -11,9 +11,9 @@ export default function Aromas() {
             <SloganText text={'Revigorante, fresco, vibrante, ácido, energizante'}></SloganText>
             <ScentDetail
                 id={0}
-                description={`Imagine-se em um campo ensolarado de laranjeiras, banhado pela luz e pelo aroma vibrante e revigorante dos cítricos.
-A frescura do limão siciliano, a acidez da lima e a doçura da tangerina se combinam em uma explosão de energia que revigora os sentidos e eleva o humor.`}
-                matches={['cores vibrantes,', 'manhãs e inícios de tarde', 'e música instrumental alegre']} 
+                text1={'Imagine-se em um campo ensolarado de laranjeiras, banhado pela luz e pelo aroma vibrante e revigorante dos cítricos.'}
+                text2={'A frescura do limão siciliano, a acidez da lima e a doçura da tangerina se combinam em uma explosão de energia que revigora os sentidos e eleva o humor.'} 
+                matches={['cores vibrantes,', 'manhãs e inícios de tarde', 'e música instrumental alegre']}
             />
         </ScrollView>
     );

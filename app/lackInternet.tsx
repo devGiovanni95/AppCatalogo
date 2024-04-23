@@ -1,6 +1,6 @@
-import FormResponse from '../components/FormResponse';
 import { View } from 'react-native';
-import sadFaceIcon from '../assets/sad-face-icon.png'; 
+import sadFaceIcon from '../assets/sad-face-icon.png';
+import FormResponse from '../components/FormResponse';
 
 export default function ErrorScreen() {
     return (

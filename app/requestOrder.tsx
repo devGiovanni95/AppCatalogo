@@ -1,21 +1,21 @@
 import { Box, Button, Center, ScrollView, Text, Alert, AlertIcon, AlertText, InfoIcon } from '@gluestack-ui/themed';
 import { DrawerLayoutAndroid, StatusBar, StyleSheet } from 'react-native';
-import StyleInput from '../components/StyledInput';
 import { Link, router, useRouter } from 'expo-router';
-import ButtonStyled from '../components/ButtonStyled';
 import { useEffect, useRef, useState } from 'react';
 import * as Location from 'expo-location';
 import NetInfo from '@react-native-community/netinfo';
-import ProductItemComponent from '../components/ProductItemComponent';
 import { useProduct } from '../hooks/productDetails';
 import TitleComponent from '../components/TitleComponent';
+import StyleInput from '../components/StyledInput';
+import ProductItem from '../components/ProductItem';
+import ButtonStyled from '../components/ButtonStyled';
 
 export default function SuccessScreen() {
-
     const styles = StyleSheet.create({
         button: {
             width: "90%",
-            marginTop: 10
+            marginTop: 10,
+            marginBottom: 10
         },
     })
 
@@ -32,7 +32,6 @@ export default function SuccessScreen() {
     const [email, setEmail] = useState('')
     const [showAlert, setShowAlert] = useState(false);
 
-
     interface IProductItem {
         id: number,
         name: string,
@@ -40,7 +39,6 @@ export default function SuccessScreen() {
         photo1: string,
         promotion: boolean,
         description: string
-
     }
 
     const [productDetail, setProductDetail] = useState<IProductItem | null>(null); // Estado para armazenar os detalhes do produto
@@ -52,9 +50,6 @@ export default function SuccessScreen() {
                 .catch(error => console.error('Erro ao carregar os detalhes do produto:', product.productId.id));
         }
     }, [product.productId]);
-
-
-
 
     const [isConnected, setIsConnected] = useState<boolean | null>(false);
 
@@ -93,7 +88,6 @@ export default function SuccessScreen() {
                 setShowAlert(true)
                 return
             }
-
         } else {
             router.push('/lackInternet')
             success.current?.closeDrawer()
@@ -117,6 +111,7 @@ export default function SuccessScreen() {
             await reverseGeocode(currentLocation.coords.latitude, currentLocation.coords.longitude);
         })();
     }, [isConnected]);
+
     const reverseGeocode = async (latitude: number, longitude: number) => {
         try {
             const reverseGeocodedAddress = await Location.reverseGeocodeAsync({
@@ -124,7 +119,6 @@ export default function SuccessScreen() {
                 longitude: longitude
             })
             const firstAddress = reverseGeocodedAddress[0];
-            // console.log("🚀 ~ reverseGeocode ~ firstAddress:", firstAddress)
             if (firstAddress) {
                 setCity(firstAddress.subregion)
                 setCidade(firstAddress.subregion + "")
@@ -136,7 +130,6 @@ export default function SuccessScreen() {
             console.error(error)
         }
     }
-
 
     if (!productDetail) {
         return <TitleComponent title="Carregando..." />;
@@ -163,7 +156,7 @@ export default function SuccessScreen() {
                         marginBottom: 8,
                         marginTop: 16
                     }}>Produto</Text>
-                    <ProductItemComponent
+                    <ProductItem
                         id={productDetail.id}
                         name={productDetail.name}
                         price={'R$ ' + productDetail.price.toFixed(2)}
@@ -207,6 +200,4 @@ export default function SuccessScreen() {
             </ScrollView>
         );
     }
-
-
 }

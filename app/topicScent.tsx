@@ -1,7 +1,7 @@
 import React from "react";
 import { router } from "expo-router";
 import { ScrollView } from "react-native";
-import TopicsScentComponent from "../components/TopicsPageComponent";
+import TopicsScent from "../components/TopicsPage";
 import TitleComponent from "../components/TitleComponent";
 import SloganText from "../components/SloganText";
 
@@ -18,7 +18,7 @@ export default function TopicoAroma() {
         <ScrollView>
             <TitleComponent title={'Como escolher o aroma ideal?'}></TitleComponent>
             <SloganText text={'Bateu a dúvida do qual dos nossos aromas escolher? Relaxa, estamos aqui para te ajudar!'}></SloganText>
-            <TopicsScentComponent
+            <TopicsScent
                 imageUrl={imageUrl}
                 intro={"Encontrar a fragrância perfeita para sua casa ou presente pode ser uma tarefa divertida e sensorial. Siga estas dicas e acerte na escolha:"}
                 dicas={dicas}

@@ -1,6 +1,6 @@
 import { Pressable,Text } from "@gluestack-ui/themed"
 
-interface IButton {
+interface ButtonStyledProps {
     title: string
     color: string
     colorText: string
@@ -8,7 +8,7 @@ interface IButton {
     onPress?: () => void
 }
 
-export default function ButtonStyled({title, color, colorText,borderColor,onPress}:IButton){
+export default function ButtonStyled({title, color, colorText,borderColor,onPress}:ButtonStyledProps){
     return(        
         <Pressable
         onPress={onPress}
@@ -28,7 +28,6 @@ export default function ButtonStyled({title, color, colorText,borderColor,onPres
             >
                 {title}
             </Text>
-
         </Pressable>
     )
 }

@@ -1,16 +1,14 @@
 import { Text, StyleSheet } from 'react-native';
 
-interface StyledButtonProps {
+interface TitleComponentProps {
   title: string;
 }
 
-export default function Title({ title }: StyledButtonProps) {
+export default function TitleComponent({ title }: TitleComponentProps) {
   return (
-    <>
-      <Text style={styles.title}>
-        {title}
-      </Text>
-    </>
+    <Text style={styles.title}>
+      {title}
+    </Text>
   );
 }
 

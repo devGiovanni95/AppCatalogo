@@ -11,9 +11,9 @@ export default function Aromas() {
             <SloganText text={'Suave, açucarado, aconchegante, sensual, meloso'}></SloganText>
             <ScentDetail
                 id={1}
-                description={`Mergulhe em um abraço aconchegante de aromas doces e gourmand. Deixe-se envolver pela suavidade da baunilha, pelo calor cremoso do caramelo e pela doçura melíflua do mel. 
-As notas de chocolate quente e canela especiada criam um ambiente acolhedor e sensual, perfeito para relaxar e se conectar com o seu interior.`}
-                matches={['cores quentes', 'noites e fins de tarde', 'e banhos quentes relaxantes']} 
+                text1={'Mergulhe em um abraço aconchegante de aromas doces e gourmand. Deixe-se envolver pela suavidade da baunilha, pelo calor cremoso do caramelo e pela doçura melíflua do mel.'}
+                text2={'As notas de chocolate quente e canela especiada criam um ambiente acolhedor e sensual, perfeito para relaxar e se conectar com o seu interior.'}
+                matches={['cores quentes', 'noites e fins de tarde', 'e banhos quentes relaxantes']}
             />
         </ScrollView>
     );

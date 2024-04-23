@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ScrollView } from '@gluestack-ui/themed'
 import TitleComponent from '../components/TitleComponent'
-import BestProductComponent from '../components/BestProductComponent'
+import BestProduct from '../components/BestProduct'
 import { useProduct } from '../hooks/productDetails'
 import { router } from 'expo-router'
 
@@ -34,7 +34,7 @@ export default function ProductDetails() {
     } else {
         return (
             <ScrollView>
-                <BestProductComponent
+                <BestProduct
                     key={productDetail.id}
                     id={productDetail.id}
                     name={productDetail.name}

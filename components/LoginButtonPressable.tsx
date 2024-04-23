@@ -1,22 +1,19 @@
 import { Pressable, StyleSheet, Text  } from "react-native";
 
-interface StyledButtonPressableProps {
+interface LoginButtonPressableProps {
     title: string
     onPress: () => void
     color?: string
 }
 
-export default function StyledButtonPressable({title, onPress, color}: StyledButtonPressableProps){
+export default function LoginButtonPressable({title, onPress, color}: LoginButtonPressableProps){
     return(
-        // crindo nosso componente
-        <>
-            <Pressable 
-                style={styles.button}
-                onPress={onPress}
-            >
-                <Text style={styles.text}>{title}</Text>
-            </Pressable>
-        </>
+        <Pressable 
+            style={styles.button}
+            onPress={onPress}
+        >
+            <Text style={styles.text}>{title}</Text>
+        </Pressable>
     )
 }
 
@@ -38,6 +35,5 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         letterSpacing: 0.25,
         color: 'white',
-      },
-    
+    },
 })

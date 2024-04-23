@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { ScrollView } from '@gluestack-ui/themed';
-import TitleComponent from '../components/TitleComponent';
-import ScentItemComponent from '../components/ScentItemComponent';
 import { router } from 'expo-router';
+import TitleComponent from '../components/TitleComponent';
+import ScentItem from '../components/ScentItem';
 
 const aromas = [
     { id: 0, titulo: "Cítrico", description: "Revigorante, fresco, vibrante, ácido, energizante" },
@@ -20,14 +20,14 @@ export default function Aromas() {
         <TitleComponent title={'Aromas'}></TitleComponent>
         <View style={{ alignItems: "center" }}>
             {aromas.map((aroma) => (
-            <ScentItemComponent
+            <ScentItem
             key={aroma.id}
             id={aroma.id}
             name={aroma.titulo}
             description={aroma.description} 
             onPress={() => {
                 setScentId(aroma.id);
-                router.push(`/aromaDetalhe${aroma.id}`)
+                router.push(`/scentDetail${aroma.id}`)
             }}
             />
         ))}

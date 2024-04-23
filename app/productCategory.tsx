@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
 import { ScrollView } from '@gluestack-ui/themed'
-import TitleComponent from '../components/TitleComponent'
 import { router } from 'expo-router'
 import { useProduct } from '../hooks/productDetails'
-import BestProductComponent from '../components/BestProductComponent'
-import ProductItemComponent from '../components/ProductItemComponent'
 import { useCategory } from '../hooks/categoryDetails'
+import BestProduct from '../components/BestProduct'
+import ProductItem from '../components/ProductItem'
+import TitleComponent from '../components/TitleComponent'
 
 export default function ProductCategory() {
-
     const category = useCategory()
     const product = useProduct()
-
     interface IProductItem {
         id: number,
         name: string,
@@ -45,7 +43,7 @@ export default function ProductCategory() {
                     {productList.map((item, index) => {
                         if (index === 0) {
                             return (
-                                <BestProductComponent
+                                <BestProduct
                                     key={index}
                                     id={item.id}
                                     name={item.name}
@@ -60,7 +58,7 @@ export default function ProductCategory() {
                             );
                         } else {
                             return (
-                                <ProductItemComponent
+                                <ProductItem
                                     key={index}
                                     id={item.id}
                                     name={item.name}
@@ -77,6 +75,5 @@ export default function ProductCategory() {
                 </View>
             </ScrollView>
         );
-
     }
 }

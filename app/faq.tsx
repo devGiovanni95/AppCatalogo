@@ -1,4 +1,4 @@
-import { StyleSheet, View, Image, ScrollView } from 'react-native'
+import { StyleSheet, View, ScrollView } from 'react-native'
 import { Text } from '@gluestack-ui/themed'
 import Accordion from '../components/Accordion'
 

@@ -1,36 +1,29 @@
-import React from "react";
 import { Text, View, Image, StyleSheet, Pressable } from "react-native";
 
-interface ScentItemProps {
+
+interface ProductItemProps {
     id: number,
     name: string,
-    description: string,
+    price: string,
+    photo: string,
+    promotion: boolean,
     onPress: () => void
 }
 
-interface ImageObject {
-    [key: number]: any;
-}
 
-const images: ImageObject = {
-    0: require("../assets/aroma0.png"),
-    1: require("../assets/aroma1.png"),
-    2: require("../assets/aroma2.png"),
-    3: require("../assets/aroma3.png"),
-};
-
-export default function ScentItemComponent({ id, name, description, onPress }: ScentItemProps) {
+export default function ProductItem({ id, name, price, photo, promotion, onPress }: ProductItemProps) {
+    const formattedPrice = price
     return (
         <Pressable style={styles.container} onPress={onPress} data-id={id}>
-            <Image style={styles.image} source={images[id]} />
-            <View style={styles.itemDetail}>
-                <Text style={styles.itemName}>{name}</Text>
-                <Text style={styles.itemDescription}>{description}</Text>
-            </View>
+                <Image style={styles.image} source={{ uri: photo }} />
+                <View style={styles.itemDetail}>
+                    <Text style={styles.itemName}>{name}</Text>
+                    <Text style={styles.itemPrice}>{formattedPrice}</Text>
+                    <Text style={styles.itemPromotion}>{promotion ? "Em promoção" : ""}</Text>
+                </View>
         </Pressable>
     )
 }
-
 const styles = StyleSheet.create({
     container: {
         width: '90%',
@@ -41,7 +34,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         paddingTop: 16,
-        paddingBottom: 16
+        paddingBottom: 16,
     },
     itemDetail: {
         maxWidth: '55%'
@@ -52,10 +45,17 @@ const styles = StyleSheet.create({
         fontWeight: '500',
         marginBottom: 16,
     },
-    itemDescription: {
+    itemPrice: {
         color: '#000000',
+        fontSize: 18,
+        fontWeight: '500',
+        marginBottom: 16
+    },
+    itemPromotion: {
+        color: '#7A5656',
         fontSize: 14,
-        fontWeight: '400',
+        fontWeight: '800',
+        alignSelf: 'flex-end'
     },
     image: {
         maxWidth: '35%',
@@ -63,5 +63,5 @@ const styles = StyleSheet.create({
         height: 100,
         borderRadius: 8,
         alignSelf: 'center'
-    }
+    },
 });
