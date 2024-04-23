@@ -28,7 +28,7 @@ const Drawer: React.FC<DrawerProps> = ({ children }) => {
     };
 
     const handleAromas = () => {
-        router.push("/aromas");
+        router.push("/scents");
         drawer.current?.closeDrawer();
     };
 

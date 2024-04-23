@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Image, ImageSourcePropType, View, StyleSheet, Text, Pressable } from 'react-native';
-
+import { AntDesign } from '@expo/vector-icons';
 interface ImageOverlayProps {
   imageUrl: ImageSourcePropType | undefined;
   legend: ReactNode;
@@ -14,6 +14,9 @@ export default function ImageOverlay({ imageUrl, legend, onPress }: ImageOverlay
         <Image source={imageUrl} style={styles.imageStyles} />
         <View style={styles.overlay}>
           <Text style={styles.caption}>{legend}</Text>
+          <View style={{display:'flex', flexDirection:'row-reverse'}}>
+            <AntDesign name="arrowright" size={32} color="#7A5656" /> 
+          </View>
         </View>
       </View>
     </Pressable>
