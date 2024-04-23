@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, ImageSourcePropType, Pressable } from 'react-native';
-
+import { AntDesign } from '@expo/vector-icons';
 interface ContainerImageProps {
   imageUrl: ImageSourcePropType | undefined;
   text: string,
@@ -15,6 +15,9 @@ export default function ContainterImage({ imageUrl, text, onPress }: ContainerIm
       </View>
       <View style={styles.textContainer}>
         <Text style={styles.text}>{text}</Text>
+        <View style={{display:'flex', flexDirection:'row-reverse'}}>
+            <AntDesign name="arrowright" size={32} color="#7A5656" /> 
+        </View>
       </View>
     </Pressable>
   );

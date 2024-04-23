@@ -1,5 +1,6 @@
+import React from "react";
 import { Text, View, Image, StyleSheet, Pressable } from "react-native";
-
+import { AntDesign } from '@expo/vector-icons';
 
 interface ProductItemProps {
     id: number,
@@ -20,6 +21,9 @@ export default function ProductItem({ id, name, price, photo, promotion, onPress
                     <Text style={styles.itemName}>{name}</Text>
                     <Text style={styles.itemPrice}>{formattedPrice}</Text>
                     <Text style={styles.itemPromotion}>{promotion ? "Em promoção" : ""}</Text>
+                    <View style={{display:'flex', flexDirection:'row-reverse'}}>
+                        <AntDesign name="arrowright" size={32} color="#7A5656" /> 
+                    </View>
                 </View>
         </Pressable>
     )
