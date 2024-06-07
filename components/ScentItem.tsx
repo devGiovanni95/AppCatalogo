@@ -1,6 +1,5 @@
 import React from "react";
 import { Text, View, Image, StyleSheet, Pressable } from "react-native";
-import { AntDesign } from '@expo/vector-icons';
 
 interface ScentItemProps {
     id: number,
@@ -29,9 +28,6 @@ export default function ScentItemComponent({ id, name, description, onPress }: S
             <View style={styles.textContainer}>
                 <Text style={styles.itemName}>{name}</Text>
                 <Text style={styles.text}>{description}</Text>
-                <View style={{display:'flex', flexDirection:'row-reverse'}}>
-                  <AntDesign name="arrowright" size={32} color="#7A5656" /> 
-              </View>
             </View>
         </Pressable>
     )
