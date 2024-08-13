@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { ScrollView } from '@gluestack-ui/themed'
 import TitleComponent from '../components/TitleComponent'
 import BestProduct from '../components/BestProduct'
 import { useProduct } from '../hooks/productDetails'
 import { router } from 'expo-router'
+import { CartContext } from '../hooks/cartItem'
 
 export default function ProductDetails() {
     const product = useProduct(); // Obtenha o ID do produto usando useProduct
@@ -29,6 +30,34 @@ export default function ProductDetails() {
         }
     }, [product.productId]);
 
+
+    //logica pra adicionar o produto no carrinho
+    const context = useContext(CartContext);
+    if (!context) {
+        throw new Error('AddProductComponent must be used within a CartProvider');
+    }
+
+    const { addProduct } = context;
+
+    const handleAddProduct = () => {
+        console.log('entrou')
+        const newProduct = { 
+            id: productDetail?.id,
+            name: productDetail?.name,
+            price: productDetail?.price,
+            quantidade: 1,
+            image: productDetail?.photo1
+        };
+        console.log('produto',newProduct)
+        addProduct(newProduct);
+        router.push('cart1');
+    };
+    
+    
+
+
+
+
     if (!productDetail) {
         return <TitleComponent title="Carregando..." />;
     } else {
@@ -42,8 +71,10 @@ export default function ProductDetails() {
                     photo={productDetail.photo1}
                     promotion={productDetail.promotion}
                     description={productDetail.description}
-                    onPress={() => {product.setProductId({id: productDetail.id})
-                    router.push('/requestOrder')}}
+                    onPress={()=> {handleAddProduct()}}
+                //     onPress={() => {product.setProductId({id: productDetail.id})
+                //     router.push('/requestOrder')
+                // }}
                 />
             </ScrollView>
         );

@@ -3,7 +3,7 @@ import React, { createContext, useState } from 'react';
 // Defina o tipo de cada produto
 interface Product {
     id: number;
-    titulo: string;
+    name: string;
     price: string;
     quantidade: number;
     image: string;
@@ -13,6 +13,7 @@ interface Product {
 interface CartContextType {
     products: Product[];
     updateProductQuantity: (id: number, delta: number) => void;
+    addProduct: (product: Product) => void;
 }
 
 // Crie o contexto
@@ -47,7 +48,7 @@ export const CartContext = createContext<CartContextType | undefined>(undefined)
     };
 
     return (
-        <CartContext.Provider value={{ products, updateProductQuantity }}>
+        <CartContext.Provider value={{ products, updateProductQuantity, addProduct }}>
             {children}
         </CartContext.Provider>
     );
