@@ -26,7 +26,7 @@ export default function StyleInput({placeholder, onChangeText, name, value}: Sty
 
 const styles = StyleSheet.create({
     input: {
-        width: '90%',
+        width: '100%',
         height: 40,
         marginTop: 8,
         marginBottom: 8,
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         padding: 10
     },
     text: {
-        marginStart: '5%',
+        marginStart: '0%',
         marginTop: 8,
         fontWeight: "800",
         color: "black"

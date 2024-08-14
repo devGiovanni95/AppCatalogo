@@ -4,13 +4,25 @@ import { Ionicons } from '@expo/vector-icons';
 import Svg, { Path } from 'react-native-svg';
 import { useRouter } from 'expo-router';
 
+// interface DrawerProps {
+//     children: React.ReactNode;
+// }
+
+// const Drawer: React.FC<DrawerProps> = ({ children }) => {
+//     const drawer = useRef<DrawerLayoutAndroid>(null);
+//     const router = useRouter();
 interface DrawerProps {
     children: React.ReactNode;
+    isDrawerDisabled?: boolean;
 }
 
-const Drawer: React.FC<DrawerProps> = ({ children }) => {
+const Drawer: React.FC<DrawerProps> = ({ children, isDrawerDisabled }) => {
     const drawer = useRef<DrawerLayoutAndroid>(null);
     const router = useRouter();
+
+    if (isDrawerDisabled) {
+        return <>{children}</>;
+    }
 
     const handleHome = () => {
         router.push('/');
