@@ -25,7 +25,20 @@ export default function SuccessScreen() {
     const [city, setCity] = useState<string | null>('')
     const [errorMsg, setErrorMsg] = useState('')
     const [nome, setNome] = useState('')
-    const [colorPassword, setColorPassword] = useState('gray')
+
+    const [c_password, setC_Password] = useState('')
+    const [c_confirmPassword, setC_confirmPassword] = useState('')
+    const [c_nome, setC_nome] = useState('')
+    const [c_endereço, setC_endereço] = useState('')
+    const [c_bairro, setC_bairro] = useState('')
+    const [c_cidade, setC_cidade] = useState('')
+    const [c_estado, setC_estado] = useState('')
+    const [c_pais, setC_pais] = useState('')
+    const [c_telefone, setC_telefone] = useState('')
+    const [c_email, setC_email] = useState('')
+
+
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
@@ -79,10 +92,55 @@ export default function SuccessScreen() {
 
     const handleRegister = async () => {
         const url = 'https://api-catalogo-pi.onrender.com/user';
+        let lack = false
         if(password != confirmPassword){
-            setColorPassword('red')
-            return
+            setC_Password('red')
+            setC_confirmPassword('red')
+            lack = true
         }
+        if(password == ''){
+            setC_Password('red')
+            lack = true
+        }
+        if(confirmPassword == ''){
+            setC_confirmPassword('red')
+            lack = true
+        }
+        if(nome == ''){
+            setC_nome('red')
+            lack = true
+        }
+        if(endereco ==''){
+            setC_endereço('red')
+            lack = true
+        }
+        if(bairro == ''){
+            setC_bairro('red')
+            lack = true
+        }
+        if(cidade == ''){
+            setC_cidade('red')
+            lack = true
+        }
+        if(estado == ''){
+            setC_estado('red')
+            lack = true
+        }
+        if(pais == ''){
+            setC_pais('red')
+            lack = true
+        }
+        if(telefone == ''){
+            setC_telefone('red')
+            lack = true
+        }
+        if(email == ''){
+            setC_email('red')
+            lack = true
+        }
+
+        if(lack == true){return}
+
         console.log('entrou')
         const data = {
             name: nome,
@@ -167,16 +225,16 @@ export default function SuccessScreen() {
                         Cadastro
                     </Text>
                 </Center>
-                <StyleInput placeholder={'Digite seu Nome'} name='Nome' value={nome} onChangeText={setNome} />
-                <StyleInput placeholder={'Digite seu Endereço'} name='Endereço' value={endereco} onChangeText={setEndereco} />
-                <StyleInput placeholder={'Digite seu Bairro'} name='Bairro' value={bairro} onChangeText={setBairro} />
-                <StyleInput placeholder={'Digite seu Cidade'} name='Cidade' value={cidade} onChangeText={setCidade} />
-                <StyleInput placeholder={'Digite seu Estado'} name='Estado' value={estado} onChangeText={setEstado} />
-                <StyleInput placeholder={'Digite seu Pais'} name='Pais' value={pais} onChangeText={setPais} />
-                <StyleInput placeholder={'Digite seu Telefone'} name='Telefone' value={telefone} onChangeText={setTelefone} />
-                <StyleInput placeholder={'Digite seu E-mail'} name='E-mail' value={email} onChangeText={setEmail} />
-                <StyleInputPassword placeholder={'Digite sua senha'} name='Senha' value={password} onChangeText={setPassword} colormg={colorPassword} />
-                <StyleInputPassword placeholder={'Digite novamente sua senha'} name='Confirme sua senha' value={confirmPassword} onChangeText={setConfirmPassword} colormg={colorPassword} />
+                <StyleInput placeholder={'Digite seu Nome'} name='Nome' value={nome} onChangeText={setNome}  color={c_nome}/>
+                <StyleInput placeholder={'Digite seu Endereço'} name='Endereço' value={endereco} onChangeText={setEndereco} color={c_endereço}/>
+                <StyleInput placeholder={'Digite seu Bairro'} name='Bairro' value={bairro} onChangeText={setBairro} color={c_bairro}/>
+                <StyleInput placeholder={'Digite seu Cidade'} name='Cidade' value={cidade} onChangeText={setCidade} color={c_cidade}/>
+                <StyleInput placeholder={'Digite seu Estado'} name='Estado' value={estado} onChangeText={setEstado} color={c_estado}/>
+                <StyleInput placeholder={'Digite seu Pais'} name='Pais' value={pais} onChangeText={setPais} color={c_pais}/>
+                <StyleInput placeholder={'Digite seu Telefone'} name='Telefone' value={telefone} onChangeText={setTelefone} color={c_telefone}/>
+                <StyleInput placeholder={'Digite seu E-mail'} name='E-mail' value={email} onChangeText={setEmail} color={c_email}/>
+                <StyleInputPassword placeholder={'Digite sua senha'} name='Senha' value={password} onChangeText={setPassword} colormg={c_password} />
+                <StyleInputPassword placeholder={'Confirme novamente'} name='Confirme sua senha' value={confirmPassword} onChangeText={setConfirmPassword} colormg={c_confirmPassword} />
 
                 <Center>
                     {showAlert && (

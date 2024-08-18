@@ -11,6 +11,14 @@ interface StyledPasswordInputProps {
     onChangeText?: (text: string) => void;
 }
 
+const getTextStyle = (color:any) => ({
+    color: color || 'white', 
+    fontSize: 14,
+    padding:0,
+    margin: 0,
+    // Adicione mais propriedades de estilo conforme necessário
+  });
+
 export default function StyleInputPassword({
     placeholder,
     onChangeText,
@@ -37,9 +45,10 @@ export default function StyleInputPassword({
                         secureTextEntry={!isPasswordVisible}
                     />
                     <TouchableOpacity onPress={togglePasswordVisibility} style={styles.icon}>
-                        <MaterialIcons name={isPasswordVisible ? 'visibility' : 'visibility-off'} size={24} color="black" />
+                        <MaterialIcons name={isPasswordVisible ? 'visibility' : 'visibility-off'} size={48} color="black" />
                     </TouchableOpacity>
                 </View>
+                    <Text style={getTextStyle(colormg)}>Campo obrigatório</Text>
             </Center>
         </>
     );
@@ -54,7 +63,8 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         color: 'gray',
         padding: 10,
-        height:40
+        height:40,
+        marginBottom: 0
     },
     input: {
         flex: 1,
@@ -63,11 +73,13 @@ const styles = StyleSheet.create({
     },
     text: {
         marginStart: '0%',
-        marginTop: 8,
+        marginTop: 4,
         fontWeight: "800",
         color: "black"
     },
     icon: {
         padding: 8,
+        color:'black',
+        justifyContent: 'center',
     }
 });
