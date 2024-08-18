@@ -1,7 +1,7 @@
 import { Box, Button, Center, ScrollView, Text, Alert, AlertIcon, AlertText, InfoIcon } from '@gluestack-ui/themed';
 import { DrawerLayoutAndroid, StatusBar, StyleSheet } from 'react-native';
 import { Link, router, useRouter } from 'expo-router';
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as Location from 'expo-location';
 import NetInfo from '@react-native-community/netinfo';
 import { useProduct } from '../hooks/productDetails';
@@ -9,6 +9,7 @@ import TitleComponent from '../components/TitleComponent';
 import StyleInput from '../components/StyledInput';
 import ProductItem from '../components/ProductItem';
 import ButtonStyled from '../components/ButtonStyled';
+import StyleInputPassword from '../components/StyledInputPassword';
 
 export default function SuccessScreen() {
     const styles = StyleSheet.create({
@@ -24,12 +25,16 @@ export default function SuccessScreen() {
     const [city, setCity] = useState<string | null>('')
     const [errorMsg, setErrorMsg] = useState('')
     const [nome, setNome] = useState('')
+    const [colorPassword, setColorPassword] = useState('gray')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
     const [telefone, setTelefone] = useState('')
     const [endereco, setEndereco] = useState<string>('')
     const [bairro, setBairro] = useState<string>('')
     const [cidade, setCidade] = useState<string>('')
     const [estado, setEstado] = useState<string>('')
-    const [email, setEmail] = useState('')
+    const [pais, setPais] = useState<string>('')
     const [showAlert, setShowAlert] = useState(false);
 
     interface IProductItem {
@@ -72,32 +77,55 @@ export default function SuccessScreen() {
     const success = useRef<DrawerLayoutAndroid>(null);
     const router = useRouter();
 
-    const handleSuccess = () => {
-        if (isConnected === true) {
-            if (nome.trim() !== '' &&
-                endereco.trim() !== '' &&
-                telefone.trim() !== '' &&
-                bairro.trim() !== '' &&
-                cidade.trim() !== '' &&
-                estado.trim() !== '' &&
-                email.trim() !== '') {
-                router.push('/success')
-                success.current?.closeDrawer()
-            }
-            else {
-                setShowAlert(true)
-                return
-            }
-        } else {
-            router.push('/lackInternet')
-            success.current?.closeDrawer()
+    const handleRegister = async () => {
+        const url = 'https://api-catalogo-pi.onrender.com/user';
+        if(password != confirmPassword){
+            setColorPassword('red')
+            return
         }
-    };
+        console.log('entrou')
+        const data = {
+            name: nome,
+            email: email,
+            password: password,
+            phone: telefone,
+            address: endereco,
+            district: bairro,
+            city: cidade,
+            state: estado,
+            country: pais
+        };
+        console.log("🚀 ~ handleRegister ~ data:", data)
+    
+        try {
+          const response = await fetch(url, {
+            method: 'POST', // Método HTTP
+            headers: {
+              'Content-Type': 'application/json', // Tipo de conteúdo enviado
+            },
+            body: JSON.stringify(data) // Dados a serem enviados
+          });
+    
+          console.log("🚀 ~ handleRegister ~ response:", response)
+          if (!response.ok) {
+            
+            throw new Error('Network response was not ok.');
+          }
+    
+          const result = await response.json();
+          console.log('Success:', result);
+          router.push('successRegister')
+        } catch (error) {
+          console.error('Error:', error);
+          router.push('unsuccessRegister')
+        }
+      };
 
     const handleBack = () => {
         router.push('/')
         success.current?.closeDrawer()
     };
+
 
     useEffect(() => {
         (async () => {
@@ -125,48 +153,32 @@ export default function SuccessScreen() {
                 setBairro(firstAddress.district + "")
                 setEndereco(firstAddress.street + " " + firstAddress.streetNumber)
                 setEstado(firstAddress.region + "")
+                setPais(firstAddress.country + "")
             }
         } catch (error) {
             console.error(error)
         }
     }
 
-    if (!productDetail) {
-        return <TitleComponent title="Carregando..." />;
-    } else {
         return (
-            <ScrollView >
+            <ScrollView padding={20} marginBottom={50} height={'100%'}>
                 <Center>
-                    <Text fontSize={24}>
-                        Para encomendar o produto por favor informe seus dados nos campos abaixo:
+                    <Text fontSize={24} fontWeight={'800'} color='#7A5656' >
+                        Cadastro
                     </Text>
                 </Center>
                 <StyleInput placeholder={'Digite seu Nome'} name='Nome' value={nome} onChangeText={setNome} />
-                <StyleInput placeholder={'Digite seu Telefone'} name='Telefone' value={telefone} onChangeText={setTelefone} />
                 <StyleInput placeholder={'Digite seu Endereço'} name='Endereço' value={endereco} onChangeText={setEndereco} />
                 <StyleInput placeholder={'Digite seu Bairro'} name='Bairro' value={bairro} onChangeText={setBairro} />
                 <StyleInput placeholder={'Digite seu Cidade'} name='Cidade' value={cidade} onChangeText={setCidade} />
                 <StyleInput placeholder={'Digite seu Estado'} name='Estado' value={estado} onChangeText={setEstado} />
+                <StyleInput placeholder={'Digite seu Pais'} name='Pais' value={pais} onChangeText={setPais} />
+                <StyleInput placeholder={'Digite seu Telefone'} name='Telefone' value={telefone} onChangeText={setTelefone} />
                 <StyleInput placeholder={'Digite seu E-mail'} name='E-mail' value={email} onChangeText={setEmail} />
+                <StyleInputPassword placeholder={'Digite sua senha'} name='Senha' value={password} onChangeText={setPassword} colormg={colorPassword} />
+                <StyleInputPassword placeholder={'Digite novamente sua senha'} name='Confirme sua senha' value={confirmPassword} onChangeText={setConfirmPassword} colormg={colorPassword} />
 
                 <Center>
-                    <Text style={{
-                        fontWeight: "800",
-                        fontSize: 24,
-                        marginBottom: 8,
-                        marginTop: 16
-                    }}>Produto</Text>
-                    <ProductItem
-                        id={productDetail.id}
-                        name={productDetail.name}
-                        price={'R$ ' + productDetail.price.toFixed(2)}
-                        photo={productDetail.photo1}
-                        promotion={productDetail.promotion}
-                        onPress={() => {
-                            product.setProductId({ id: productDetail.id })
-                            router.push('/productDetail')
-                        }} />
-
                     {showAlert && (
                         <Alert mx="$5" action="error" variant="outline">
                             <AlertIcon as={InfoIcon} mr="$3" />
@@ -175,12 +187,12 @@ export default function SuccessScreen() {
                     )}
                 </Center>
 
-                <Center>
+                <Center style={{marginBottom:20}}>
                     <Box style={styles.button} >
                         <ButtonStyled
-                            onPress={() => handleSuccess()}
+                            onPress={() => handleRegister()}
                             color='#7A5656'
-                            title='Enviar'
+                            title='Cadastrar'
                             colorText='white'
                             borderColor='#7A5656'
                         />
@@ -196,8 +208,8 @@ export default function SuccessScreen() {
                         />
                     </Box>
                 </Center>
-
+                    
             </ScrollView>
         );
     }
-}
+

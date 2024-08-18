@@ -9,7 +9,7 @@ import { CartProvider } from '../hooks/cartItem';
 
 export default function Layout() {
     const segments = useSegments();
-    const isDrawerDisabled = segments.includes('login'); // Verifique se "login" corresponde ao nome correto do arquivo da tela
+    const isDrawerDisabled = segments.includes('login') || segments.includes('register'); // Verifique se "login" corresponde ao nome correto do arquivo da tela
 
     return (
     <CartProvider>

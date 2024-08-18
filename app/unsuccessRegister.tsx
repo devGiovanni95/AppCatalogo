@@ -6,9 +6,9 @@ export default function ErrorScreen() {
     return (
         <View>
             <FormResponse
-                text1='Falha no envio da encomenda...'
+                text1='Falha no cadastro..'
                 image={sadFaceIcon} 
-                text2='Pedimos desculpas pelo incoveniente. Esperamos que você possa realizar seu pedido novamente mais tarde.'
+                text2='Pedimos desculpas pelo incoveniente. Esperamos que você possa ser cadastrar novamente mais tarde.'
             />
         </View>
     );

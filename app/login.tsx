@@ -14,9 +14,13 @@ export default function Login() {
   const [password, setPassword] = useState();
 
   const imageUrl = require('../assets/logo1.jpg');
-    const handleLogin = () => {
-        router.push('home')
-    }
+  const handleLogin = () => {
+      router.push('home')
+  }
+  const handleRegister = () => {
+    router.push('register')
+  }
+
   return (
     <View style={background.container}>
       <View style={container.container}>
@@ -39,6 +43,10 @@ export default function Login() {
         <StyledButtonPressable
             onPress={handleLogin}
             title='Login'
+        />
+        <StyledButtonPressable
+            onPress={handleRegister}
+            title='Não sou cadastrado'
         />
       </View>
     </View>

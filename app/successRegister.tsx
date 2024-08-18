@@ -6,9 +6,9 @@ export default function SuccessScreen() {
     return (
         <View>
             <FormResponse
-                text1='Obrigado(a) por encomendar conosco!'
+                text1='Obrigado(a) por se cadastrar!'
                 image={happyFaceIcon} // Passa diretamente o caminho da imagem
-                text2='Esperamos que você possa aproveitar nossos produtos ao máximo!'
+                text2='Aproveite ao máximo a nossa plataforma'
             />
         </View>
     );

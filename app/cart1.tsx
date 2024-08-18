@@ -84,7 +84,7 @@ console.log('Total soma = ', total)
                 {'SubTotal : R$ '} {total.toFixed(2)}
             </Text>
             <View style={{width: '90%', marginTop:15}}>
-                 <ButtonStyled title={'Finalizar Pedido'} color={'#7A5656'} colorText={'white'} borderColor={'white'}/>
+                 <ButtonStyled title={'Finalizar Pedido'} color={'#7A5656'} colorText={'white'} borderColor={'white'} onPress={()=>{router.push('requestOrder')}}/>
             </View>
         </View>
     </ScrollView>
