@@ -23,6 +23,7 @@ export default function Login() {
   }
 
   const handleLogin = async () => {
+    console.log('entrou')
     setLoading(true);
     setError('');
 

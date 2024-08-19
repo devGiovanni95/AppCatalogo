@@ -13,6 +13,7 @@
     "@gluestack-style/react": "^1.0.51",
     "@gluestack-ui/config": "^1.1.16",
     "@gluestack-ui/themed": "^1.1.11",
+    "@react-native-async-storage/async-storage": "^1.24.0",
     "@react-native-community/netinfo": "11.3.0",
     "expo": "~51.0.0",
     "expo-constants": "~16.0.2",
