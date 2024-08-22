@@ -15,7 +15,7 @@ interface ScentImageProps {
     [key: number]: any;
 }
 
-export default function CartItemComponent({ id, name, price, quantidade, image, onPressAdd, onPressRemove }: ScentItemProps) {
+export default function OrdertemComponent({ id, name, price, quantidade, image, onPressAdd, onPressRemove }: ScentItemProps) {
     return (
         <Pressable style={styles.container} data-id={id}>
             <View style={styles.imageContainer}>

@@ -10,6 +10,7 @@ import { Center } from '@gluestack-ui/themed';
 import { useState } from 'react';
 import { setItemAsync } from 'expo-secure-store';
 
+
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -54,15 +55,23 @@ export default function Login() {
             }),
         });
 
-
         const data = await response.json();
 
         if (response.ok) {
+          const address = {
+            "address": data.address,
+            "district": data.district,
+            "city": data.city,
+            "state": data.state,
+            "country": data.country
+          }
+
           setItemAsync('userId', JSON.stringify(data.user.id))
           setItemAsync('name', JSON.stringify(data.user.name))
+          setItemAsync('address', JSON.stringify(address))
           setItemAsync('token', JSON.stringify(data.token))
           console.log('Login successful', data);
-            router.push('home')
+          router.push('home')
         } else {
             setError('Erro ao fazer o login');
         }
