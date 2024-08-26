@@ -44,7 +44,7 @@ export default function Login() {
           return
         }
 
-        const response = await fetch('https://api-catalogo-pi.onrender.com/auth', {
+        const response = await fetch('https://api-catalogo-pi-1.onrender.com/auth', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

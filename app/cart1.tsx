@@ -33,8 +33,36 @@ export default function Aromas() {
     };
 
     useEffect(() => {
+        async function getUserAddress() {
+            try {
+                const userIdString = await SecureStore.getItem('userId');
+                // Convertendo o valor de volta para um número (se for o caso)
+                const userId = userIdString ? JSON.parse(userIdString) : null;
+              // Faz a requisição GET para o endpoint especificado
+              const response = await fetch(`https://api-catalogo-pi-1.onrender.com/user/address/${userId}`, {
+                method: 'GET', // Define o método como GET
+                headers: {
+                  'Content-Type': 'application/json', // Define o tipo de conteúdo como JSON
+                },
+              });
+          
+              // Verifica se a resposta foi bem-sucedida
+              if (!response.ok) {
+                throw new Error(`Erro: ${response.statusText}`); // Lança um erro se a resposta não for bem-sucedida
+              }
+          
+              // Converte a resposta em JSON
+              const data = await response.json();
+              console.log('Dados do endereço do usuário:', data);
+              setAddress(data);
+            } catch (error) {
+              console.error('Erro ao buscar endereço do usuário:', error);
+            }
+          }
 
-        const fetchAddress = async () => {
+          getUserAddress()
+
+    /*    const fetchAddress = async () => {
             try {
                 const userIdString = await SecureStore.getItem('userId');
                 // Convertendo o valor de volta para um número (se for o caso)
@@ -54,8 +82,11 @@ export default function Aromas() {
                 console.error('Erro ao buscar o endereço:', error);
             }
         };
-    
         fetchAddress();
+        */
+
+
+        
         // setTotal(0)
         // products.map((item) => {
         //     setTotal(total + (Number(item.price) * Number(item.quantidade)))
@@ -93,7 +124,7 @@ export default function Aromas() {
     console.log('endereco', address)
 
     const handleOrder = async () => {
-        const url = 'https://api-catalogo-pi.onrender.com/order';
+        const url = 'https://api-catalogo-pi-1.onrender.com/order';
         let lack = false
 
         // Pegando o valor 
@@ -197,7 +228,7 @@ export default function Aromas() {
             onRequestClose={() => setModalVisible(false)}
         >
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,0.5)' }}>
-                <View style={{ width: '80%', padding: 20, backgroundColor: 'white', borderRadius: 10 }}>
+                <View style={{height:'80%', width: '100%', padding: 20, backgroundColor: 'white', borderRadius: 10 }}>
                     <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 15 }}>Confirmar Pedido</Text>
                     <Text style={{ marginBottom: 20, fontSize: 18 }}>Total do pedido R$ {total.toFixed(2)}</Text>
 
