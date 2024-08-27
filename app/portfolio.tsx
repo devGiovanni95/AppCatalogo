@@ -21,7 +21,7 @@ export default function Home() {
 
     const [list, setList] = useState<IProductItem[]>([])
     useEffect(() =>{
-        fetch('https://api-catalogo-pi.onrender.com/product')
+        fetch('https://api-catalogo-pi-1.onrender.com/product')
         .then(response => response.json())
         .then(json => setList(json))
     })

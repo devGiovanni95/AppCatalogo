@@ -70,18 +70,24 @@ export default function Aromas() {
         </View>
 
         <View style={{display:'flex', alignItems:'center', marginTop:15}}>
-            <Text style={{fontSize:22, fontWeight:"700", color: '#7A5656'}}>
-                {'SubTotal : R$ '} {total.toFixed(2)}
-            </Text>
-            <View style={{width: '90%', marginTop:15}}>
-                 <ButtonStyled 
-                    title={'Finalizar Pedido'} 
-                    color={'#7A5656'} 
-                    colorText={'white'} 
-                    borderColor={'white'} 
-                    onPress={()=>{router.push('confirmationOrder')}}
-                />
-            </View>
+            { total > 0 ? (
+                <>
+                    <Text style={{fontSize:22, fontWeight:"700", color: '#7A5656'}}>
+                        {'SubTotal : R$ '} {total.toFixed(2)}
+                    </Text>
+                    <View style={{width: '90%', marginTop:15}}>
+                        <ButtonStyled 
+                            title={'Finalizar Pedido'} 
+                            color={'#7A5656'} 
+                            colorText={'white'} 
+                            borderColor={'white'} 
+                            onPress={()=>{router.push('confirmationOrder')}}
+                        />
+                    </View>
+                </>
+            ):(
+                <Text  style={{fontSize:22, fontWeight:"700", color: '#7A5656'}}>Sem itens no carrinho</Text>
+            )}
         </View>
     </ScrollView>
 );

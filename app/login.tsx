@@ -59,17 +59,9 @@ export default function Login() {
         console.log("🚀 ~ handleLogin ~ data:", data)
 
         if (response.ok) {
-          const address = {
-            "address": data.address,
-            "district": data.district,
-            "city": data.city,
-            "state": data.state,
-            "country": data.country
-          }
 
           setItemAsync('userId', JSON.stringify(data.user.id))
           setItemAsync('name', JSON.stringify(data.user.name))
-          setItemAsync('address', JSON.stringify(address))
           setItemAsync('token', JSON.stringify(data.token))
           console.log('Login successful', data);
           router.push('home')

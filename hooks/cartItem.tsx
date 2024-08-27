@@ -14,6 +14,7 @@ interface CartContextType {
     products: Product[];
     updateProductQuantity: (id: number, delta: number) => void;
     addProduct: (product: Product) => void;
+    clearCart: () => void; // Nova função para limpar o carrinho
 }
 
 // Crie o contexto
@@ -43,12 +44,6 @@ export const CartContext = createContext<CartContextType | undefined>(undefined)
         
         //atualiza os dados pra mais ou pra menos 
         const updateProductQuantity = (id: number, delta: number) => {
-     /*       setProducts(prevProducts =>
-                prevProducts.map(product =>
-                    product.id === id ? { ...product, quantidade: product.quantidade + delta } : product
-                )
-            );*/
-
             setProducts(prevProducts => {
                 const updatedProducts = prevProducts
                     .map(product =>
@@ -79,8 +74,14 @@ export const CartContext = createContext<CartContextType | undefined>(undefined)
             });
         };
 
+        // Limpa o carrinho
+        const clearCart = async () => {
+            setProducts([]);
+            await AsyncStorage.removeItem('products'); // Remove o item do AsyncStorage
+        };
+
         return (
-            <CartContext.Provider value={{ products, updateProductQuantity, addProduct }}>
+            <CartContext.Provider value={{ products, updateProductQuantity, addProduct, clearCart }}>
                 {children}
             </CartContext.Provider>
         );

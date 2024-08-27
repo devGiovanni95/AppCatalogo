@@ -23,7 +23,7 @@ export default function ProductDetails() {
 
     useEffect(() => {
         if (product.productId) {
-            fetch(`https://api-catalogo-pi.onrender.com/product/${product.productId.id}`)
+            fetch(`https://api-catalogo-pi-1.onrender.com/product/${product.productId.id}`)
                 .then(response => response.json())
                 .then(json => setProductDetail(json))
                 .catch(error => console.error('Erro ao carregar os detalhes do produto:', product.productId.id));

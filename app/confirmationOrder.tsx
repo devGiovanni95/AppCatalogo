@@ -13,6 +13,7 @@ export default function ConfirmationOrder() {
   if(!context){
       throw new Error('Aromas must be used within a CartProvider');
   }
+  const { clearCart } = context;
   const { products, updateProductQuantity  } = context
   const [total, setTotal] = useState(0);
   const [paymentMethod, setPaymentMethod] = useState('credit_card'); 
@@ -88,14 +89,23 @@ const handleOrder = async () => {
       price: item.price
   }));
     
-
   console.log('order itens', orderItems)
+  
+  let method_pay = '';
+  if(paymentMethod === 'Cartão de Crédito'){
+    method_pay = paymentMethod + ' ' + installments
+  } else{
+    method_pay = paymentMethod
+  }
 
+
+  //adicionar quantas vezes
   const data = {
       userId: userId,  // Defina o userId conforme necessário
       status: "pending",
-      paymentMethod: "credit_card",  // Defina a forma de pagamento conforme necessário
-      orderItems: orderItems
+      method_payment: method_pay,  // Defina a forma de pagamento conforme necessário
+      orderItems: orderItems,
+      deliveryDetails: address
   };
 
   console.log("🚀 ~ handleRegister ~ data:", data)
@@ -110,20 +120,22 @@ const handleOrder = async () => {
     });
 
     console.log("🚀 ~ handleRegister ~ response:", response)
-    if (!response.ok) {
-        
+    if (!response.ok) {        
         throw new Error('Network response was not ok.');
-    } else {
-        router.push('orderchat')
-    }
-
+    } 
+    
     const result = await response.json();
     console.log('Success:', result);
-    router.push('successRegister')
-    } catch (error) {
+    //router.push('success');
+    clearCart()
+    router.push('orderlist');
+
+  } catch (error) {
+
     console.error('Error:', error);
-    router.push('unsuccessRegister')
-    }
+    router.push('unsuccess');
+
+  }
 };
 
   return (
@@ -165,14 +177,14 @@ const handleOrder = async () => {
                 style={styles.picker}
                 onValueChange={(item) => { setPaymentMethod(item)}}
             >
-                <Picker.Item label="PIX" value="pix" />
-                <Picker.Item label="Cartão de Crédito" value="credit_card" />
-                <Picker.Item label="Cartão de Débito" value="debit_card" />
-                <Picker.Item label="Boleto" value="boleto" />
-                <Picker.Item label="Transferência Bancária" value="transfer"/>
+                <Picker.Item label="PIX" value="PIX" />
+                <Picker.Item label="Cartão de Crédito" value="Cartão de Crédito" />
+                <Picker.Item label="Cartão de Débito" value="Cartão de Débito" />
+                <Picker.Item label="Boleto" value="Boleto" />
+                <Picker.Item label="Transferência Bancária" value="Transferência Bancária"/>
             </Picker>
 
-            {paymentMethod === 'credit_card' && (
+            {paymentMethod === 'Cartão de Crédito' && (
         <>
           <Text style={styles.label}>Número de Parcelas:</Text>
           <Picker
@@ -198,9 +210,9 @@ const handleOrder = async () => {
 
       <View style={styles.buttonContainer}>
         <View style={{marginBottom:10}}>
-        <Button title="Confirmar" onPress={() => {}} />
+        <Button title="Confirmar" onPress={() => {handleOrder()}} />
         </View>
-        <Button title="Cancelar" onPress={() => {}} color="red" />
+        <Button title="Cancelar" onPress={() => {router.replace('cart1')}} color="red" />
       </View>
     </ScrollView>
   );

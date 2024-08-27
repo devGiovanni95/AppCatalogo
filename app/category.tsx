@@ -21,7 +21,7 @@ export default function Category() {
     const [list, setList] = useState<ICategoryItem[]>([])
 
     useEffect(() => {
-        fetch('https://api-catalogo-pi.onrender.com/category')
+        fetch('https://api-catalogo-pi-1.onrender.com/category')
             .then(response => response.json())
             .then(json => setList(json))
     })

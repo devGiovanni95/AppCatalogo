@@ -25,7 +25,7 @@ export default function ProductCategory() {
 
     useEffect(() => {
         if (category.categoryId) {
-            fetch(`https://api-catalogo-pi.onrender.com/product/category/${category.categoryId.id}`)
+            fetch(`https://api-catalogo-pi-1.onrender.com/product/category/${category.categoryId.id}`)
                 .then(response => response.json())
                 .then(json => setProductList(json))
         }

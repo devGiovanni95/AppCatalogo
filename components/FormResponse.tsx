@@ -14,7 +14,7 @@ export default function FormResponse({ text1, image, text2 }: StyledButtonProps)
     const router = useRouter();
 
     const handleSuccess = () => {
-        router.push('/');
+        router.push('/home');
         success.current?.closeDrawer();
     };
 

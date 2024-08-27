@@ -52,6 +52,10 @@ const Drawer: React.FC<DrawerProps> = ({ children, isDrawerDisabled }) => {
         router.push('/cart1');
         drawer.current?.closeDrawer();
     };
+    const handleOrders = () => {
+        router.push('/orderlist');
+        drawer.current?.closeDrawer();
+    };
 
     const navigationView = () => (
         <View style={[styles.container, styles.navigationContainer]}>
@@ -61,6 +65,7 @@ const Drawer: React.FC<DrawerProps> = ({ children, isDrawerDisabled }) => {
             <Text style={styles.option} onPress={handleAromas}>Aromas</Text>
             <Text style={styles.option} onPress={handleFaq}>F.A.Q</Text>
             <Text style={styles.option} onPress={handleCart}>Cart</Text>
+            <Text style={styles.option} onPress={handleOrders}>Pedidos</Text>
         </View>
     );
 
