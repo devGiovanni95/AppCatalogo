@@ -86,9 +86,18 @@ export default function Aromas() {
                     </View>
                 </>
             ):(
-                <Text  style={{fontSize:22, fontWeight:"700", color: '#7A5656'}}>Sem itens no carrinho</Text>
+                <Text  style={{fontSize:22, fontWeight:"700", color: '#7A5656', marginBottom:30}}>Sem itens no carrinho</Text>
             )}
         </View>
+        <View style={{padding: 20}}>
+            <ButtonStyled 
+                title={'Continuar Comprando'} 
+                color={'#7A5656'} 
+                colorText={'white'} 
+                borderColor={'white'} 
+                onPress={()=>{router.push('portfolio')}}
+                />
+            </View>
     </ScrollView>
 );
     

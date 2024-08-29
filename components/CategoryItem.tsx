@@ -1,3 +1,4 @@
+import { AntDesign } from "@expo/vector-icons";
 import { Link } from "expo-router";
 import { Text, View, Image, StyleSheet, Pressable } from "react-native";
 
@@ -19,6 +20,9 @@ export default function CategoryItem({ id, name, photo, description, onPress }: 
                 <View style={styles.itemDetail}>
                     <Text style={styles.itemName}>{name}</Text>
                     <Text style={styles.itemDescription}>{description}</Text>
+                    <View style={{display:'flex', flexDirection:'row-reverse'}}>
+                        <AntDesign name="arrowright" size={32} color="#7A5656"/> 
+                    </View>
                 </View>
             </Pressable>
         </View>
