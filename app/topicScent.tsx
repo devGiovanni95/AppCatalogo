@@ -24,7 +24,7 @@ export default function TopicoAroma() {
                 dicas={dicas}
                 conclusion={"Com essas dicas, você está pronto para encontrar a vela aromática Arôme perfeita para iluminar e perfumar seu ambiente!"}
                 link={"Confira os aromas disponíveis clicando no botão abaixo"}
-                onPress={() => router.push(`/aromas`)}
+                onPress={() => router.push(`/scents`)}
             />
         </ScrollView>
     );
