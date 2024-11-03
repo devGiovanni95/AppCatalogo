@@ -76,6 +76,15 @@ export default function Aromas() {
                         {'SubTotal : R$ '} {total.toFixed(2)}
                     </Text>
                     <View style={{width: '90%', marginTop:15}}>
+                        <View style={{marginBottom:15, marginTop:15}}>
+                    <ButtonStyled 
+                        title={'Continuar comprando'} 
+                        color={'#7A5656'} 
+                        colorText={'white'} 
+                        borderColor={'white'} 
+                        onPress={()=>{router.push('portfolio')}}
+                    />
+                    </View>
                         <ButtonStyled 
                             title={'Finalizar Pedido'} 
                             color={'#7A5656'} 
@@ -85,8 +94,18 @@ export default function Aromas() {
                         />
                     </View>
                 </>
-            ):(
+            ):(<>
                 <Text  style={{fontSize:22, fontWeight:"700", color: '#7A5656'}}>Sem itens no carrinho</Text>
+                    <View style={{width: '90%', marginTop:15}}>
+                    <ButtonStyled 
+                        title={'Ver produtos'} 
+                        color={'#7A5656'} 
+                        colorText={'white'} 
+                        borderColor={'white'} 
+                        onPress={()=>{router.push('portfolio')}}
+                    />
+                </View>
+                </>
             )}
         </View>
     </ScrollView>

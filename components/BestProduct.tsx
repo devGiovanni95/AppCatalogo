@@ -1,3 +1,4 @@
+import { AntDesign } from "@expo/vector-icons";
 import { Text, View, Image, StyleSheet, Pressable } from "react-native";
 
 
@@ -21,7 +22,13 @@ export default function BestProduct({ id, name, price, photo, promotion, descrip
                 <View style={styles.itemDetail}>
                     <Text style={styles.itemName}>{name}</Text>
                     <Text style={styles.itemDescription}>{description}</Text>
-                    <Text style={styles.itemPrice}>{formattedPrice}</Text>
+                    {/* <Text style={styles.itemPrice}>{formattedPrice}</Text> */}
+                    <Text style={styles.itemPrice}>
+                        {formattedPrice} 
+                        {'                '}  
+                        <AntDesign name="arrowright" size={32} color="#7A5656" /> 
+                    </Text> 
+                    <Text></Text>
                     <Text style={styles.itemPromotion}>{promotion ? "Em promoção" : ""}</Text>
                 </View>
             </Pressable>

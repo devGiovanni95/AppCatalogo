@@ -177,11 +177,11 @@ const handleOrder = async () => {
                 style={styles.picker}
                 onValueChange={(item) => { setPaymentMethod(item)}}
             >
-                <Picker.Item label="PIX" value="PIX" />
-                <Picker.Item label="Cartão de Crédito" value="Cartão de Crédito" />
-                <Picker.Item label="Cartão de Débito" value="Cartão de Débito" />
-                <Picker.Item label="Boleto" value="Boleto" />
-                <Picker.Item label="Transferência Bancária" value="Transferência Bancária"/>
+                <Picker.Item label="PIX" value="pix" />
+                <Picker.Item label="Cartão de Crédito" value="credit_card" />
+                <Picker.Item label="Cartão de Débito" value="debit_card" />
+                <Picker.Item label="Boleto" value="boleto" />
+                <Picker.Item label="Transferência Bancária" value="bank_transf"/>
             </Picker>
 
             {paymentMethod === 'Cartão de Crédito' && (
