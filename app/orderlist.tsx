@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, StyleSheet, ActivityIndicator, ScrollView } from 'react-native';
 import Stepper from '../components/OrderProgress';
 import OrderProgress from '../components/OrderProgress';
+import ButtonStyled from '../components/ButtonStyled';
+import { router } from 'expo-router';
 
 
   interface OrderItem {
@@ -18,10 +20,7 @@ export default function OrderListScreen() {
     { label: 'Entregue', status: 'delivered' },
   ];
 
-
-
-
-  const [orders, setOrders] = useState();
+  const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(false);
 
    useEffect(() => { 
@@ -68,6 +67,7 @@ const calculateTotal = (orderItems: OrderItem[]): number => {
     }else{
       currentStepIndex = 4
     }
+    
     return (
 
       <View style={styles.orderItem}>
@@ -90,16 +90,27 @@ const calculateTotal = (orderItems: OrderItem[]): number => {
   }
 
   return (
-    <ScrollView style={styles.container}>
-      <FlatList
-        data={orders}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={renderOrder}
-      />
-        <View style={styles.container}>
-
+    <View style={styles.container}>
+      { orders.length != 0 ? (
+        <FlatList
+          data={orders}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={renderOrder}
+        />
+      ):(
+        <Text style={{color:'#7A5656', marginBottom:30, marginTop:30, textAlign:'center', fontSize:24}}>Você possui pedidos ainda</Text>
+      )
+      }
+        <View>
+          <ButtonStyled 
+              title={'Voltar'} 
+              color={'#7A5656'} 
+              colorText={'white'} 
+              borderColor={'white'} 
+              onPress={()=>{router.push('home')}}
+          />
+        </View>
     </View>
-    </ScrollView>
   );
 }
 

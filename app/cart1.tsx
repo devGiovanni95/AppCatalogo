@@ -108,6 +108,15 @@ export default function Aromas() {
                 </>
             )}
         </View>
+        <View style={{padding: 20}}>
+            <ButtonStyled 
+                title={'Continuar Comprando'} 
+                color={'#7A5656'} 
+                colorText={'white'} 
+                borderColor={'white'} 
+                onPress={()=>{router.push('portfolio')}}
+                />
+            </View>
     </ScrollView>
 );
     
